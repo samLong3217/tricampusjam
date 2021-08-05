@@ -9,11 +9,22 @@ public class PlayerController : MonoBehaviour {
     float vertical;
     int dir; // cardinal direciton player is facing for tower placement. 0 = E, 1 = N, 2 = W, 3 = S
 
+    GameObject selector; // Child selector
+
 
     public float runSpeed = 20.0f;
 
+    public GameObject towerPrefab;
+
     void Start () {
         body = GetComponent<Rigidbody2D>(); 
+        
+        Transform[] transforms = this.GetComponentsInChildren<Transform>();
+        foreach(Transform t in transforms) {
+            if (t.gameObject.name == "Selector") {
+                selector  = t.gameObject;
+            }
+        }
     }
 
     void Update () {
@@ -26,7 +37,10 @@ public class PlayerController : MonoBehaviour {
             dir = (int) Mathf.Floor(vertical + 2);
         }
 
-        // update the target reticle position based on direction
+        // Place a tower when the button is pressed
+        if (Input.GetButtonDown("Jump")) {
+            PlaceTower();
+        }
 
     }
 
@@ -37,5 +51,10 @@ public class PlayerController : MonoBehaviour {
 
     public int Dir() {
         return dir;
+    }
+
+    // Places a tower at the current selector position
+    public void PlaceTower() {
+        Instantiate(towerPrefab, selector.transform.position, Quaternion.identity);
     }
 }
