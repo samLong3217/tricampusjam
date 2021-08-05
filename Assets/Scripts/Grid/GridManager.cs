@@ -3,14 +3,15 @@ using UnityEngine;
 
 public class GridManager : MonoBehaviour
 {
-    public static GridManager Instance;
-    
+    private static GridManager _instance;
     private Dictionary<Vector2Int, GridObject> _objects;
 
     private void Start()
     {
-        Destroy(Instance);
-        Instance = this;
+        Destroy(_instance);
+        _instance = this;
+
+        _objects = new Dictionary<Vector2Int, GridObject>();
     }
 
     /// <summary>
@@ -22,12 +23,12 @@ public class GridManager : MonoBehaviour
     /// <returns>Whether the registration was successful</returns>
     public static bool Register(GridObject toRegister)
     {
-        if (Instance._objects.TryGetValue(toRegister.Position, out GridObject existing) && existing != null)
+        if (_instance._objects.TryGetValue(toRegister.Position, out GridObject existing) && existing != null)
         {
             return false;
         }
         
-        Instance._objects[toRegister.Position] = toRegister;
+        _instance._objects[toRegister.Position] = toRegister;
         return true;
     }
 
@@ -39,14 +40,14 @@ public class GridManager : MonoBehaviour
     /// <returns>The object or null</returns>
     public static GridObject Get(Vector2Int position)
     {
-        return Instance._objects.TryGetValue(position, out GridObject existing) ? existing : null;
+        return _instance._objects.TryGetValue(position, out GridObject existing) ? existing : null;
     }
 
     private void OnDestroy()
     {
-        foreach (GridObject obj in Instance._objects.Values)
+        foreach (GridObject obj in _instance._objects.Values)
         {
-            Destroy(obj.gameObject);
+            if (obj != null) Destroy(obj.gameObject);
         }
     }
 }
