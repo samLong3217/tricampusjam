@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public static class Dijkstras
@@ -6,11 +8,17 @@ public static class Dijkstras
     /// <summary>
     /// Runs Dijkstra's. Returns null if no path is found.
     /// </summary>
-    /// <param name="start">The start of the path</param>
-    /// <param name="ends">A collection containing the possible ends of the paths</param>
+    /// <param name="startNode">The start of the path</param>
+    /// <param name="endLocs">A collection containing the possible ends of the paths</param>
     /// <returns>An ordered list of the nodes, representing the path. Includes the start and end.</returns>
     public static List<IPathfindingNode> GetPath(IPathfindingNode startNode, HashSet<Vector2Int> endLocs)
     {
+        if (endLocs == null || endLocs.Count == 0)
+        {
+            Debug.Log("Empty Dijkstra");
+            return null;
+        }
+        
         /*
          * This linkedlist setup is used to efficiently store all the paths to search. It does this by storing the
          * current path /backwards/, which is to say each node points to the one /before/ it.
@@ -71,7 +79,7 @@ public static class Dijkstras
     /*
      * Check the comment in GetPath(IDijkstraNode, HashSet<IDijkstraNode>) to see what this does.
      */
-    private class LinkedListNode : IComparer<LinkedListNode>
+    private class LinkedListNode : IComparable<LinkedListNode>
     {
         public readonly float PathWeight;
         public readonly IPathfindingNode PathfindingNode;
@@ -90,9 +98,14 @@ public static class Dijkstras
             list.Add(PathfindingNode);
         }
 
-        public int Compare(LinkedListNode x, LinkedListNode y)
+        public int CompareTo(LinkedListNode other)
         {
-            return Comparer<float>.Default.Compare(x.PathWeight, y.PathWeight);
+            if (other == null) return 1;
+            int comparison = PathWeight.CompareTo(other.PathWeight);
+            if (comparison != 0) return comparison;
+            comparison = PathfindingNode.Location().x.CompareTo(other.PathfindingNode.Location().x);
+            if (comparison != 0) return comparison;
+            return PathfindingNode.Location().y.CompareTo(other.PathfindingNode.Location().y);
         }
     }
 }

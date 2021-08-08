@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3031652143742877183}
   - component: {fileID: 4772242094008236492}
   - component: {fileID: 8002659700226845411}
+  - component: {fileID: 5519093004802354938}
   m_Layer: 8
   m_Name: Enemy
   m_TagString: enemy
@@ -124,3 +125,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 5
+--- !u!114 &5519093004802354938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3031652143742877182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b185a6b8111f63343a67d5240a7495c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

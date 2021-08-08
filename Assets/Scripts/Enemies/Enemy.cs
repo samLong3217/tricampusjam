@@ -1,6 +1,6 @@
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
@@ -8,22 +8,22 @@ public class Enemy : MonoBehaviour
 
     Dictionary<GameObject, bool> registeredHitboxes = new Dictionary<GameObject, bool>(); // Used to register hitboxes seen. True if in i frames
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
+    public float Speed = 0.5f;
+    
+    private void Update()
     {
         if (hp <= 0) {
             Destroy(gameObject);
         }
+        
+        Vector2Int target = AIManager.GetTarget(this);
+        Vector3 position = transform.position;
+        Vector3 translation = new Vector3(target.x - position.x, target.y - position.y);
+        transform.Translate(translation.normalized * (Speed * Time.deltaTime));
     }
 
-    public void TakeDamage(int amt) {
+    public void TakeDamage(int amt)
+    {
         hp -= amt;
     }
 
