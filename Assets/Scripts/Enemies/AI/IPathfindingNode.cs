@@ -1,4 +1,7 @@
-public interface IDijkstraNode : System.IEquatable<IDijkstraNode>
+using System;
+using System.Collections.Generic;
+
+public interface IPathfindingNode : IEquatable<IPathfindingNode>
 {
     /// <summary>
     /// The cost to enter this node
@@ -8,5 +11,5 @@ public interface IDijkstraNode : System.IEquatable<IDijkstraNode>
     /// <summary>
     /// The nodes which can be entered from this node
     /// </summary>
-    public System.Collections.Generic.List<IDijkstraNode> Neighbors();
+    public IEnumerable<IPathfindingNode> Neighbors();
 }

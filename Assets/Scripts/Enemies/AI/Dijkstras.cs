@@ -8,7 +8,7 @@ public static class Dijkstras
     /// <param name="start">The start of the path</param>
     /// <param name="ends">A collection containing the possible ends of the paths</param>
     /// <returns>An ordered list of the nodes, representing the path. Includes the start and end.</returns>
-    public static List<IDijkstraNode> GetPath(IDijkstraNode start, HashSet<IDijkstraNode> ends)
+    public static List<IPathfindingNode> GetPath(IPathfindingNode start, HashSet<IPathfindingNode> ends)
     {
         /*
          * This linkedlist setup is used to efficiently store all the paths to search. It does this by storing the
@@ -28,13 +28,13 @@ public static class Dijkstras
          */
         SortedSet<LinkedListNode> toVisit = new SortedSet<LinkedListNode>();
         // Prevent loops by preventing nodes from ever being traversed twice
-        HashSet<IDijkstraNode> seen = new HashSet<IDijkstraNode> {start};
+        HashSet<IPathfindingNode> seen = new HashSet<IPathfindingNode> {start};
 
         LinkedListNode nextVisit = new LinkedListNode(start, 0, null);
-        while (!ends.Contains(nextVisit.DijkstraNode))
+        while (!ends.Contains(nextVisit.PathfindingNode))
         {
             // Add neighbors
-            foreach (IDijkstraNode neighbor in nextVisit.DijkstraNode.Neighbors())
+            foreach (IPathfindingNode neighbor in nextVisit.PathfindingNode.Neighbors())
             {
                 if (seen.Contains(neighbor)) continue;
                 
@@ -51,7 +51,7 @@ public static class Dijkstras
         }
 
         // Make the List from the linkedlist, reverse order as described above
-        List<IDijkstraNode> result = new List<IDijkstraNode>();
+        List<IPathfindingNode> result = new List<IPathfindingNode>();
         nextVisit.FillList(result);
         return result;
     }
@@ -62,9 +62,9 @@ public static class Dijkstras
     /// <param name="start">The start of the path</param>
     /// <param name="end">The end of the path</param>
     /// <returns>An ordered list of the nodes, representing the path. Includes the start and end.</returns>
-    public static List<IDijkstraNode> GetPath(IDijkstraNode start, IDijkstraNode end)
+    public static List<IPathfindingNode> GetPath(IPathfindingNode start, IPathfindingNode end)
     {
-        return GetPath(start, new HashSet<IDijkstraNode> {end});
+        return GetPath(start, new HashSet<IPathfindingNode> {end});
     }
 
     /*
@@ -73,20 +73,20 @@ public static class Dijkstras
     private class LinkedListNode : IComparer<LinkedListNode>
     {
         public readonly float PathWeight;
-        public readonly IDijkstraNode DijkstraNode;
+        public readonly IPathfindingNode PathfindingNode;
         private readonly LinkedListNode _next;
 
-        public LinkedListNode(IDijkstraNode dijkstraNode, float pathWeight, LinkedListNode next)
+        public LinkedListNode(IPathfindingNode pathfindingNode, float pathWeight, LinkedListNode next)
         {
-            DijkstraNode = dijkstraNode;
+            PathfindingNode = pathfindingNode;
             PathWeight = pathWeight;
             _next = next;
         }
 
-        public void FillList(List<IDijkstraNode> list)
+        public void FillList(List<IPathfindingNode> list)
         {
             _next?.FillList(list);
-            list.Add(DijkstraNode);
+            list.Add(PathfindingNode);
         }
 
         public int Compare(LinkedListNode x, LinkedListNode y)
