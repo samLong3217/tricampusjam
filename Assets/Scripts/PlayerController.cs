@@ -23,6 +23,8 @@ public class PlayerController : MonoBehaviour {
     public float offset = 1.0f;
     Vector3 gridOffset = new Vector3(0.0f, 0.0f, 0.0f); // offset for the grid. Currently at 0.0 to center each tile 
 
+    public int money = 400;
+
     void Start () {
         body = GetComponent<Rigidbody2D>(); 
         
@@ -91,7 +93,14 @@ public class PlayerController : MonoBehaviour {
 
     // Places a tower at the current selector position
     public void PlaceTower() {
-        Instantiate(towerPrefab[selectedTower], selector.transform.position, Quaternion.identity);
+        GameObject tower =  Instantiate(towerPrefab[selectedTower], selector.transform.position, Quaternion.identity);
+        if (tower.GetComponent<Tower>().cost > money) {
+            Destroy(tower);
+            Debug.Log("No money dog");
+        } else {
+            money -= tower.GetComponent<Tower>().cost;
+            Debug.Log(money);
+        }
     }
 
     /// <summary>

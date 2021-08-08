@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Shooter : MonoBehaviour
+public class Shooter : Tower
 {
     public int radius = 3;
 
@@ -10,17 +10,11 @@ public class Shooter : MonoBehaviour
 
     public GameObject bullet;
 
-    // Start is called before the first frame update
-    void Start()
-    {
+    public override void Start() {
+        base.Start();
          StartCoroutine("FireTower");
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     IEnumerator FireTower() {
      for(;;) {
