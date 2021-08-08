@@ -33,14 +33,14 @@ public class GridManager : MonoBehaviour
     /// <returns>Whether the registration was successful</returns>
     public static bool Register(GridObject toRegister)
     {
-        if (!_instance._validRegion.Contains(toRegister.Position)) return false;
+        if (!_instance._validRegion.Contains(toRegister.Location)) return false;
         
-        if (_instance._objects.TryGetValue(toRegister.Position, out GridObject existing) && existing != null)
+        if (_instance._objects.TryGetValue(toRegister.Location, out GridObject existing) && existing != null)
         {
             return false;
         }
         
-        _instance._objects[toRegister.Position] = toRegister;
+        _instance._objects[toRegister.Location] = toRegister;
         return true;
     }
     
@@ -52,19 +52,27 @@ public class GridManager : MonoBehaviour
     /// <returns>Whether the object was successfully unregistered</returns>
     public static bool Unregister(GridObject toUnregister)
     {
-        return _instance._objects.Remove(toUnregister.Position);
+        return _instance._objects.Remove(toUnregister.Location);
     }
 
     /// <summary>
-    /// Gets the object at a given position.
-    /// If there is no object at that position, returns null.
+    /// Gets the object at a given location.
+    /// If there is no object at that location, returns null.
     /// </summary>
-    /// <param name="position">The position to check in</param>
+    /// <param name="location">The location to check in</param>
     /// <returns>The object or null</returns>
     public static GridObject Get(Vector2Int location)
     {
         if (!_instance._validRegion.Contains(location)) return null;
         return _instance._objects.TryGetValue(location, out GridObject existing) ? existing : null;
+    }
+    
+    /// <summary>
+    /// Determines if the given location is inside the play area
+    /// </summary>
+    public static bool IsValidLocation(Vector2Int location)
+    {
+        return _instance._validRegion.Contains(location);
     }
 
     private void OnDestroy()

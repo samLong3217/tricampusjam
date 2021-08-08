@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class AIManager : MonoBehaviour
@@ -25,7 +27,10 @@ public class AIManager : MonoBehaviour
 
         if (!_instance._pathNodes.ContainsKey(enemyLoc))
         {
-            MakePath(enemyLoc, TargetManager.GetLocations());
+            if (!MakePath(enemyLoc, TargetManager.GetLocations()))  // If pathmaking failed
+            {
+                return enemyLoc;
+            }
         }
 
         AINode node0 = _instance._pathNodes[enemyLoc];
@@ -48,13 +53,14 @@ public class AIManager : MonoBehaviour
         _instance._pathNodes.Clear();
     }
 
-    private static void MakePath(Vector2Int startLoc, HashSet<Vector2Int> endLocs)
+    private static bool MakePath(Vector2Int startLoc, HashSet<Vector2Int> endLocs)
     {
         GridObject startObject = GridManager.Get(startLoc);
         IPathfindingNode startNode = startObject != null ?
-            startObject.GetPathfindingNode() : new EmptyPathfindingNode(startLoc);
+            startObject.GetPathfindingNode() : new BasicPathfindingNode(startLoc);
         
         List<IPathfindingNode> path = Dijkstras.GetPath(startNode, endLocs);
+        if (path == null) return false;
         
         // Add the end
         IPathfindingNode end = path[path.Count - 1];
@@ -80,6 +86,8 @@ public class AIManager : MonoBehaviour
                 _instance._pathNodes[path[i].Location()] = lastNode;
             }
         }
+
+        return true;
     }
     
     // Standard linkedlist node

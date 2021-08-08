@@ -25,6 +25,7 @@ public class TargetManager : MonoBehaviour
         if (GridManager.Register(toRegister))
         {
             _instance._targets.Add(toRegister);
+            AIManager.ClearPaths();
             return true;
         }
 
@@ -41,7 +42,14 @@ public class TargetManager : MonoBehaviour
     public static bool Unregister(GridObject toUnregister)
     {
         if (!_instance._targets.Remove(toUnregister)) return false;
-        return GridManager.Unregister(toUnregister);
+        bool result = GridManager.Unregister(toUnregister);
+        
+        if (result)
+        {
+            AIManager.ClearPaths();
+        }
+        
+        return result;
     }
 
     /// <summary>
@@ -52,7 +60,7 @@ public class TargetManager : MonoBehaviour
         HashSet<Vector2Int> result = new HashSet<Vector2Int>();
         foreach (GridObject target in _instance._targets)
         {
-            result.Add(target.Position);
+            result.Add(target.Location);
         }
 
         return result;

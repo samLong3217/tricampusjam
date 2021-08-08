@@ -229,6 +229,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Waves:
   - {fileID: 11400000, guid: 0d5529dc5fa89504abd8b2d222ebbb64, type: 2}
+--- !u!1 &923547929 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1338384424006398800, guid: 53d57f05b4fb12a4ea35c2f873a540fb,
+    type: 3}
+  m_PrefabInstance: {fileID: 1338384422901068845}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &923547935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 923547929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 486bb23030c8def458899c4415d37218, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1488867789 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8098261699532800301, guid: 53d57f05b4fb12a4ea35c2f873a540fb,
@@ -247,7 +265,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62f7e5a19cb1f6e4abd1326280db504b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parent: {fileID: 0}
+  pController: {fileID: 0}
   offset: 1
+  gridOffset: {x: 0, y: 0, z: 0}
 --- !u!1 &1933788438
 GameObject:
   m_ObjectHideFlags: 0
@@ -280,7 +301,7 @@ MonoBehaviour:
   PlayRegion:
     x: 0
     y: 0
-    width: 5
+    width: 20
     height: 10
 --- !u!4 &1933788440
 Transform:
