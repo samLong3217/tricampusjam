@@ -31,6 +31,17 @@ public class GridManager : MonoBehaviour
         _instance._objects[toRegister.Position] = toRegister;
         return true;
     }
+    
+    /// <summary>
+    /// Unregisters an object to the grid.
+    /// You must use this method to ensure the object stops interacting with the game.
+    /// </summary>
+    /// <param name="toUnregister">The object to unregister</param>
+    /// <returns>Whether the object was successfully unregistered</returns>
+    public static bool Unregister(GridObject toUnregister)
+    {
+        return _instance._objects.Remove(toUnregister.Position);
+    }
 
     /// <summary>
     /// Gets the object at a given position.
