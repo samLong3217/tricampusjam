@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6000612297402758023}
   - component: {fileID: 812578023526397112}
+  - component: {fileID: 8737945972647548065}
   m_Layer: 0
   m_Name: Shooter
   m_TagString: Untagged
@@ -83,3 +84,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &8737945972647548065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1622149526062023523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d9b2baef21175248923cf34af07443a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 6
+  fireSpeed: 3
+  bullet: {fileID: 4409020849033516174, guid: 7537577348e209d45af5c7e9a3038f53, type: 3}
