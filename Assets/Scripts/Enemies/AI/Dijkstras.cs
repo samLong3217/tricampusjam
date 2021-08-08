@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEngine;
 
 public static class Dijkstras
 {
@@ -8,7 +9,7 @@ public static class Dijkstras
     /// <param name="start">The start of the path</param>
     /// <param name="ends">A collection containing the possible ends of the paths</param>
     /// <returns>An ordered list of the nodes, representing the path. Includes the start and end.</returns>
-    public static List<IPathfindingNode> GetPath(IPathfindingNode start, HashSet<IPathfindingNode> ends)
+    public static List<IPathfindingNode> GetPath(IPathfindingNode startNode, HashSet<Vector2Int> endLocs)
     {
         /*
          * This linkedlist setup is used to efficiently store all the paths to search. It does this by storing the
@@ -28,18 +29,18 @@ public static class Dijkstras
          */
         SortedSet<LinkedListNode> toVisit = new SortedSet<LinkedListNode>();
         // Prevent loops by preventing nodes from ever being traversed twice
-        HashSet<IPathfindingNode> seen = new HashSet<IPathfindingNode> {start};
+        HashSet<Vector2Int> seen = new HashSet<Vector2Int> {startNode.Location()};
 
-        LinkedListNode nextVisit = new LinkedListNode(start, 0, null);
-        while (!ends.Contains(nextVisit.PathfindingNode))
+        LinkedListNode nextVisit = new LinkedListNode(startNode, 0, null);
+        while (!endLocs.Contains(nextVisit.PathfindingNode.Location()))
         {
             // Add neighbors
             foreach (IPathfindingNode neighbor in nextVisit.PathfindingNode.Neighbors())
             {
-                if (seen.Contains(neighbor)) continue;
+                if (seen.Contains(neighbor.Location())) continue;
                 
                 toVisit.Add(new LinkedListNode(neighbor, nextVisit.PathWeight + neighbor.Weight(), nextVisit));
-                seen.Add(neighbor);
+                seen.Add(neighbor.Location());
             }
 
             // If there's nothing left to check, return null to indicate no path exists
@@ -62,9 +63,9 @@ public static class Dijkstras
     /// <param name="start">The start of the path</param>
     /// <param name="end">The end of the path</param>
     /// <returns>An ordered list of the nodes, representing the path. Includes the start and end.</returns>
-    public static List<IPathfindingNode> GetPath(IPathfindingNode start, IPathfindingNode end)
+    public static List<IPathfindingNode> GetPath(IPathfindingNode startNode, Vector2Int endLoc)
     {
-        return GetPath(start, new HashSet<IPathfindingNode> {end});
+        return GetPath(startNode, new HashSet<Vector2Int> {endLoc});
     }
 
     /*

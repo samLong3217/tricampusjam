@@ -1,8 +1,13 @@
-using System;
 using System.Collections.Generic;
+using UnityEngine;
 
-public interface IPathfindingNode : IEquatable<IPathfindingNode>
+public interface IPathfindingNode
 {
+    /// <summary>
+    /// The grid location of this node
+    /// </summary>
+    public Vector2Int Location();
+    
     /// <summary>
     /// The cost to enter this node
     /// </summary>
