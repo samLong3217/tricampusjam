@@ -25,7 +25,7 @@ public class AIManager : MonoBehaviour
 
         if (!_instance._pathNodes.ContainsKey(enemyLoc))
         {
-            makePath(enemyLoc, TargetManager.GetLocations());
+            MakePath(enemyLoc, TargetManager.GetLocations());
         }
 
         AINode node0 = _instance._pathNodes[enemyLoc];
@@ -48,9 +48,12 @@ public class AIManager : MonoBehaviour
         _instance._pathNodes.Clear();
     }
 
-    private static void makePath(Vector2Int startLoc, HashSet<Vector2Int> endLocs)
+    private static void MakePath(Vector2Int startLoc, HashSet<Vector2Int> endLocs)
     {
-        IPathfindingNode startNode = GridManager.Get(startLoc).GetPathfindingNode();
+        GridObject startObject = GridManager.Get(startLoc);
+        IPathfindingNode startNode = startObject != null ?
+            startObject.GetPathfindingNode() : new EmptyPathfindingNode(startLoc);
+        
         List<IPathfindingNode> path = Dijkstras.GetPath(startNode, endLocs);
         
         // Add the end

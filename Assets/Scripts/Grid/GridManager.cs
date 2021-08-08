@@ -5,6 +5,16 @@ public class GridManager : MonoBehaviour
 {
     private static GridManager _instance;
     private Dictionary<Vector2Int, GridObject> _objects;
+    private RectInt _validRegion;
+
+    /// <summary>
+    /// Sets the region in which this GridManager is allowed to handle objects
+    /// </summary>
+    /// <param name="validRegion"></param>
+    public static void SetRect(RectInt validRegion)
+    {
+        _instance._validRegion = new RectInt(validRegion.position, validRegion.size + Vector2Int.one);
+    }
 
     private void Awake()
     {
@@ -23,6 +33,8 @@ public class GridManager : MonoBehaviour
     /// <returns>Whether the registration was successful</returns>
     public static bool Register(GridObject toRegister)
     {
+        if (!_instance._validRegion.Contains(toRegister.Position)) return false;
+        
         if (_instance._objects.TryGetValue(toRegister.Position, out GridObject existing) && existing != null)
         {
             return false;
@@ -49,9 +61,10 @@ public class GridManager : MonoBehaviour
     /// </summary>
     /// <param name="position">The position to check in</param>
     /// <returns>The object or null</returns>
-    public static GridObject Get(Vector2Int position)
+    public static GridObject Get(Vector2Int location)
     {
-        return _instance._objects.TryGetValue(position, out GridObject existing) ? existing : null;
+        if (!_instance._validRegion.Contains(location)) return null;
+        return _instance._objects.TryGetValue(location, out GridObject existing) ? existing : null;
     }
 
     private void OnDestroy()
