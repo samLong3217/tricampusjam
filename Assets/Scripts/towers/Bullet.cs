@@ -13,14 +13,15 @@ public class Bullet : MonoBehaviour
         if (target != null) {
              Vector3 moveDir = (target.transform.position - transform.position).normalized;
             transform.position += moveDir * speed * Time.deltaTime;
+        } else {
+            Destroy(gameObject);
         }
     }
 
-    void OnTriggerEnter(Collider other) {
-        Debug.Log("Is this triggering?");
-        if (other.tag == "Enemy" && other.gameObject == target)  {
+    void OnTriggerEnter2D(Collider2D other) {
+        if (other.tag == "enemy" && other.gameObject == target)  {
             target.GetComponent<Enemy>().TakeDamage(1);
-            Destroy(this);
+            Destroy(gameObject);
         }
     }
 }
