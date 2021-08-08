@@ -6,7 +6,7 @@ public class GridManager : MonoBehaviour
     private static GridManager _instance;
     private Dictionary<Vector2Int, GridObject> _objects;
 
-    private void Start()
+    private void Awake()
     {
         Destroy(_instance);
         _instance = this;

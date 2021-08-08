@@ -6,7 +6,7 @@ public class TargetManager : MonoBehaviour
     private static TargetManager _instance;
     private HashSet<GridObject> _targets;
     
-    private void Start() {
+    private void Awake() {
         Destroy(_instance);
         _instance = this;
 

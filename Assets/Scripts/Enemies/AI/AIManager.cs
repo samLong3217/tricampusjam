@@ -6,7 +6,7 @@ public class AIManager : MonoBehaviour
     private static AIManager _instance;
     private Dictionary<Vector2Int, AINode> _pathNodes;
     
-    private void Start() {
+    private void Awake() {
         Destroy(_instance);
         _instance = this;
 
