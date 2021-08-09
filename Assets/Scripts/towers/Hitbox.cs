@@ -6,7 +6,8 @@ public class Hitbox : MonoBehaviour
 {
     public int damage = 1;
     public float invulnSeconds = 0.5f; // invlun time of enemy after being hit
-    void OnTriggerEnter2D(Collider2D other) {
+    
+    public void OnTriggerEnter2D(Collider2D other) {
         if (other.tag == "enemy")  {
             Debug.Log("Take damage");
             other.gameObject.GetComponent<Enemy>().TakeDamage(damage);

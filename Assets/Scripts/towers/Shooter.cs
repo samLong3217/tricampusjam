@@ -5,11 +5,10 @@ using UnityEngine;
 public class Shooter : Tower
 {
     public int radius = 3;
-
     public float fireSpeed = 1.0f;
-    float fireTime;
-
     public GameObject bullet;
+
+    private float fireTime;
 
     public override void Start() {
         base.Start();
@@ -31,7 +30,7 @@ public class Shooter : Tower
         }
     }
 
-    GameObject GetEnemyInRange() {
+    private GameObject GetEnemyInRange() {
         GameObject closestEnemy = null;
         float bestDistance = float.MaxValue;
         // iterate through all enemies in range

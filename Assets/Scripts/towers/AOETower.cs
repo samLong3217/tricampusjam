@@ -10,9 +10,9 @@ public class AOETower : Tower
 
     public GameObject hitbox;
 
-    float fireTime;
-    bool fired; // you're fired
-    GameObject hitboxInstance;
+    private float fireTime;
+    private bool fired; // you're fired
+    private GameObject hitboxInstance;
 
     public override void Start() {
         base.Start();

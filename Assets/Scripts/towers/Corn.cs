@@ -4,14 +4,7 @@ using UnityEngine;
 
 public class Corn : Tower
 {
-    public override void Start()
-    {
+    public override void Start() {
         base.Start();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    }  
 }

@@ -8,8 +8,7 @@ public class Bullet : MonoBehaviour
 
     public float speed = 1.0f;
 
-    // Update is called once per frame
-    void Update() {
+    public void Update() {
         if (target != null) {
              Vector3 moveDir = (target.transform.position - transform.position).normalized;
             transform.position += moveDir * speed * Time.deltaTime;
@@ -18,7 +17,7 @@ public class Bullet : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter2D(Collider2D other) {
+    public void OnTriggerEnter2D(Collider2D other) {
         if (other.tag == "enemy" && other.gameObject == target)  {
             target.GetComponent<Enemy>().TakeDamage(1);
             Destroy(gameObject);

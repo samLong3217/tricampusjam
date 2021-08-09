@@ -5,15 +5,18 @@ using System.Collections.Generic;
 public class Enemy : MonoBehaviour
 {
     public float hp = 5;
-
-    Dictionary<GameObject, bool> registeredHitboxes = new Dictionary<GameObject, bool>(); // Used to register hitboxes seen. True if in i frames
-
     public float Speed = 0.5f;
-    
+
+    private Dictionary<GameObject, float> registeredHitboxes = new Dictionary<GameObject, float>(); // Used to register hitboxes seen. If the value is >= 0, still invlun to that hitbox
+
     private void Update()
     {
         if (hp <= 0) {
             Destroy(gameObject);
+        }
+
+        foreach (var item in registeredHitboxes) { // adjust hitbox times
+            registeredHitboxes[item.Key] -= Time.deltaTime;
         }
         
         Vector2Int target = AIManager.GetTarget(this);
@@ -27,22 +30,15 @@ public class Enemy : MonoBehaviour
         hp -= amt;
     }
 
-    void OnTriggerEnter(Collider other) {
+    public void OnTriggerEnter(Collider other) {
         if (other.tag == "hitbox") {
             // Have we seen this hitbox before?
-            if ((registeredHitboxes.ContainsKey(other.gameObject) && !registeredHitboxes[other.gameObject]) || !registeredHitboxes.ContainsKey(other.gameObject)) {
+            if ((registeredHitboxes.ContainsKey(other.gameObject) && registeredHitboxes[other.gameObject] <= 0.0f) || !registeredHitboxes.ContainsKey(other.gameObject)) {
                 Hitbox hitbox = other.gameObject.GetComponent<Hitbox>();
                 TakeDamage(hitbox.GetDamage());
                 // Register the hitbox
-                registeredHitboxes[other.gameObject] = true;
-                StartCoroutine(DisableIFrames(hitbox.GetInvulnSeconds(), other.gameObject));
+                registeredHitboxes[other.gameObject] = hitbox.GetInvulnSeconds();
             }
         }
-    }
-
-    IEnumerator DisableIFrames(float iframes, GameObject gameObject) {
-        yield return new WaitForSeconds(iframes);
-        Debug.Log("No longer immune");
-        registeredHitboxes[gameObject] = false;
     }
 }

@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 2453385314467538785}
   m_Layer: 6
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -206,7 +206,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   runSpeed: 50
   towerPrefab: []
+  towerCost: 
   offset: 1
+  money: 400
 --- !u!61 &2453385314467538785
 BoxCollider2D:
   m_ObjectHideFlags: 0

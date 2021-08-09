@@ -3,29 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
-    
-    Rigidbody2D body;
-    float horizontal;
-    float vertical;
-    int dir; // cardinal direciton player is facing for tower placement. 0 = E, 1 = N, 2 = W, 3 = S
-
-    GameObject selector; // Child selector
-
-
     public float runSpeed = 20.0f;
-
     public GameObject[] towerPrefab;
-    int selectedTower;
-    
-    KeyCode[] keyMapping;
-
-
     public float offset = 1.0f;
-    Vector3 gridOffset = new Vector3(0.0f, 0.0f, 0.0f); // offset for the grid. Currently at 0.0 to center each tile 
-
     public int money = 400;
 
-    void Start () {
+    private Vector3 gridOffset = new Vector3(0.0f, 0.0f, 0.0f); // offset for the grid. Currently at 0.0 to center each tile 
+    private int selectedTower;
+    private KeyCode[] keyMapping;
+    private Rigidbody2D body;
+    private float horizontal;
+    private float vertical;
+    private int dir; // cardinal direciton player is facing for tower placement. 0 = E, 1 = N, 2 = W, 3 = S
+    private GameObject selector; // Child selector
+
+    private void Start () {
         body = GetComponent<Rigidbody2D>(); 
         
         Transform[] transforms = this.GetComponentsInChildren<Transform>();
@@ -41,7 +33,7 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    void Update () {
+    private void Update () {
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical"); 
         // update direciton facing
@@ -91,16 +83,18 @@ public class PlayerController : MonoBehaviour {
         return dir;
     }
 
-    // Places a tower at the current selector position
-    public void PlaceTower() {
-        GameObject tower =  Instantiate(towerPrefab[selectedTower], selector.transform.position, Quaternion.identity);
-        if (tower.GetComponent<Tower>().cost > money) {
-            Destroy(tower);
-            Debug.Log("No money dog");
-        } else {
-            money -= tower.GetComponent<Tower>().cost;
-            Debug.Log(money);
+    /// <summary>
+    /// Pay for a tower with given cost
+    /// </summary>
+    /// <param name="cost">cost of the tower</param>
+    /// <returns>true if there is enough money, false otherwise</returns>
+    public bool PayForTower(int cost) {
+        if (money - cost >= 0) {
+            money -= cost;
+            Debug.Log("Payed for tower. Money left = " + money);
+            return true;
         }
+        return false;
     }
 
     /// <summary>
@@ -116,5 +110,17 @@ public class PlayerController : MonoBehaviour {
             Mathf.Round(vector3.y / gridSize) * gridSize,
             Mathf.Round(vector3.z / gridSize) * gridSize);
         return snapped + gridOffset ;
+    }
+
+    // Places a tower at the current selector position
+    private void PlaceTower() {
+        GameObject tower =  Instantiate(towerPrefab[selectedTower], selector.transform.position, Quaternion.identity);
+        // if (tower.GetComponent<Tower>().cost > money) {
+        //     Destroy(tower);
+        //     Debug.Log("No money dog");
+        // } else {
+        //     money -= tower.GetComponent<Tower>().cost;
+        //     Debug.Log(money);
+        // }
     }
 }
