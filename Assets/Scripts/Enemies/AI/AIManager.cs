@@ -22,7 +22,7 @@ public class AIManager : MonoBehaviour
     /// <returns>The location of the target</returns>
     public static Vector2Int GetTarget(Enemy enemy)
     {
-        Vector3 enemyPos = enemy.transform.position;
+        Vector2 enemyPos = (Vector2) enemy.transform.position + enemy.Rigidbody2d.velocity * Time.deltaTime;
         Vector2Int enemyLoc = new Vector2Int(Mathf.RoundToInt(enemyPos.x), Mathf.RoundToInt(enemyPos.y));
 
         if (!_instance._pathNodes.ContainsKey(enemyLoc))
@@ -42,7 +42,7 @@ public class AIManager : MonoBehaviour
         // Move to node0 if node1 is far away. Else move to node1.
         float distance0To1 = Vector2Int.Distance(loc0 ,loc1);
         float distanceEnemyTo1 = Vector2.Distance(enemyPos, loc1);
-        return distance0To1 + 0.0001f < distanceEnemyTo1 ? loc0 : loc1;
+        return distance0To1 + 0.1f < distanceEnemyTo1 ? loc0 : loc1;
     }
 
     /// <summary>
