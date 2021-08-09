@@ -7,26 +7,28 @@ public class Shooter : Tower
     public int radius = 3;
 
     public float fireSpeed = 1.0f;
+    float fireTime;
 
     public GameObject bullet;
 
     public override void Start() {
         base.Start();
-         StartCoroutine("FireTower");
+        // StartCoroutine("FireTower");
+        fireTime = fireSpeed;
     }
 
+    public override void Update() {
+        base.Update();
+        fireTime -= Time.deltaTime;
 
-    IEnumerator FireTower() {
-     for(;;) {
-         Debug.Log("in fire");
-         GameObject target = GetEnemyInRange();
-         if (target != null) { // we found something to fire at
-            GameObject bulletInstance = Instantiate(bullet, transform.position, Quaternion.identity);
-            bulletInstance.GetComponent<Bullet>().target = target;
-            Debug.Log("fire!");
-         }
-         yield return new WaitForSeconds(fireSpeed);
-     }
+        if (fireTime <= 0) {
+            GameObject target = GetEnemyInRange();
+            if (target != null) { // we found something to fire at
+                GameObject bulletInstance = Instantiate(bullet, transform.position, Quaternion.identity);
+                bulletInstance.GetComponent<Bullet>().target = target;
+            }
+            fireTime = fireSpeed;
+        }
     }
 
     GameObject GetEnemyInRange() {
