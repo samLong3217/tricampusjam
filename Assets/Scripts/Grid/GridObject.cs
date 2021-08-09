@@ -26,4 +26,9 @@ public abstract class GridObject : MonoBehaviour
     {
         
     }
+
+    protected virtual void OnDestroy()
+    {
+        GridManager.Unregister(this);
+    }
 }
