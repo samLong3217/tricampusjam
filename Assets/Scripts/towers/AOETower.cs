@@ -10,18 +10,29 @@ public class AOETower : Tower
 
     public GameObject hitbox;
 
+    float fireTime;
+    bool fired; // you're fired
+    GameObject hitboxInstance;
+
     public override void Start() {
         base.Start();
-        StartCoroutine("FireTower");
+        fireTime = fireSpeed;
     }
 
-    IEnumerator FireTower() {
-     for(;;) {
-        Debug.Log("FIRE!");
-        GameObject hitboxInstance =  Instantiate(hitbox, transform.position, Quaternion.identity);
-        yield return new WaitForSeconds(0.1f);
-        Destroy(hitboxInstance);
-         yield return new WaitForSeconds(fireSpeed);
-     }
+    public override void Update() {
+        base.Update();
+        fireTime -= Time.deltaTime;
+        if (fireTime <= 0 && !fired) {
+            hitboxInstance =  Instantiate(hitbox, transform.position, Quaternion.identity);
+            fired = true;
+            Debug.Log("Fire");
+        } else if (fireTime <= -0.2f && fired) {
+            if (hitboxInstance != null) {
+                Destroy(hitboxInstance);
+                Debug.Log("destroyed hitbox");
+            }
+            fired = false;
+            fireTime = fireSpeed;
+        }
     }
 }
