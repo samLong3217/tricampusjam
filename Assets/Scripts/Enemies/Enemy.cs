@@ -5,10 +5,21 @@ using System.Collections.Generic;
 public class Enemy : MonoBehaviour
 {
     public float hp = 5;
-    public float Speed = 0.5f;
 
     private Dictionary<GameObject, float> registeredHitboxes = new Dictionary<GameObject, float>(); // Used to register hitboxes seen. If the value is >= 0, still invlun to that hitbox
 
+    public float Speed = 10f;
+    public float HopTime = 0.25f;
+
+    private float _hopCooldown = 0;
+    
+    public Rigidbody2D Rigidbody2d;
+
+    private void Start()
+    {
+        Rigidbody2d = GetComponent<Rigidbody2D>();
+    }
+    
     private void Update()
     {
         if (hp <= 0) {
@@ -21,8 +32,20 @@ public class Enemy : MonoBehaviour
         
         Vector2Int target = AIManager.GetTarget(this);
         Vector3 position = transform.position;
-        Vector3 translation = new Vector3(target.x - position.x, target.y - position.y);
-        transform.Translate(translation.normalized * (Speed * Time.deltaTime));
+        Vector2 translation = new Vector2(target.x - position.x, target.y - position.y);
+        
+        _hopCooldown -= Time.deltaTime;
+        if (_hopCooldown <= 0)
+        {
+            Rigidbody2d.AddForce(translation.normalized * (Speed * Rigidbody2d.mass * HopTime), ForceMode2D.Impulse);
+            _hopCooldown = HopTime * (0.75f + 0.5f * Random.value);
+        }
+        transform.rotation = Quaternion.identity;
+
+        if (AIManager.DebugMode)
+        {
+            Debug.DrawLine(position, (Vector2) target, Color.green, 0, false);
+        }
     }
 
     public void TakeDamage(int amt)
