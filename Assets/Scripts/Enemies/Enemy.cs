@@ -8,7 +8,15 @@ public class Enemy : MonoBehaviour
 
     Dictionary<GameObject, bool> registeredHitboxes = new Dictionary<GameObject, bool>(); // Used to register hitboxes seen. True if in i frames
 
-    public float Speed = 0.5f;
+    public float Speed = 2f;
+    public float DragMultiplier = 0.9f;
+
+    private Rigidbody2D _rigidbody2d;
+
+    private void Start()
+    {
+        _rigidbody2d = GetComponent<Rigidbody2D>();
+    }
     
     private void Update()
     {
@@ -18,8 +26,14 @@ public class Enemy : MonoBehaviour
         
         Vector2Int target = AIManager.GetTarget(this);
         Vector3 position = transform.position;
-        Vector3 translation = new Vector3(target.x - position.x, target.y - position.y);
-        transform.Translate(translation.normalized * (Speed * Time.deltaTime));
+        Vector2 translation = new Vector2(target.x - position.x, target.y - position.y);
+        _rigidbody2d.velocity *= DragMultiplier;
+        _rigidbody2d.AddForce(translation.normalized * (Speed * _rigidbody2d.mass));
+
+        if (AIManager.DebugMode)
+        {
+            Debug.DrawLine(position, (Vector2) target, Color.green, 0, false);
+        }
     }
 
     public void TakeDamage(int amt)
