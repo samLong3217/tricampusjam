@@ -76,7 +76,6 @@ public class PlayerController : MonoBehaviour {
             for (int i = 0; i < keyMapping.Length; i++) {
                 if (Input.GetKeyDown(keyMapping[i])) {
                     selectedTower = i;
-                    Debug.Log("Selected tower is = " + selectedTower);
                 }
             }
         }

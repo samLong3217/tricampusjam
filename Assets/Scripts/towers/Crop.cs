@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Crop : Tower, ITakesDamage
 {
+    private bool _registeredTarget;
     protected override void Start()
     {
         Vector3 position = transform.position;
@@ -16,6 +17,7 @@ public class Crop : Tower, ITakesDamage
         }
         else
         {
+            _registeredTarget = true;
             OnRegister(true);
         }
     }
@@ -35,7 +37,13 @@ public class Crop : Tower, ITakesDamage
     }
 
     public override void TakeDamage(IDamager damager, float damage) {
+        Debug.Log("Is this called?");
         RoundManager.decrementCrops();
         Destroy(gameObject);
+    }
+
+    protected override void OnDestroy()
+    {
+        if (_registeredTarget) TargetManager.Unregister(this);
     }
 }

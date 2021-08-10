@@ -59,7 +59,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 3.5
+  orthographic size: 6
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -96,7 +96,6 @@ GameObject:
   - component: {fileID: 5304343688825913512}
   - component: {fileID: 1971835360432405737}
   - component: {fileID: 2453385314467538785}
-  - component: {fileID: 923547935}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -215,6 +214,7 @@ MonoBehaviour:
   offset: 1
   money: 400
   healthCrops: 5
+  roundReward: 100
 --- !u!61 &2453385314467538785
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -239,20 +239,8 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.8, y: 0.8}
   m_EdgeRadius: 0
---- !u!114 &923547935
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1338384424006398800}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 486bb23030c8def458899c4415d37218, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &4079075632934180297
 PrefabInstance:
   m_ObjectHideFlags: 0

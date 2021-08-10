@@ -23,7 +23,6 @@ public class RoundManager : MonoBehaviour
     public static void StartWavePhase() {
         state = State.Wave;
         SpawnerManager.SetAllWaves(0, 0.0f);
-        Debug.Log("Starting the first wave");
     }
 
     public static void incrementCrops() {
@@ -40,7 +39,6 @@ public class RoundManager : MonoBehaviour
             return;
         }
         if (SpawnerManager.AllSpawnersDoneCurrent() && GameObject.FindGameObjectWithTag("enemy") == null) {
-            Debug.Log("Finished with current wave");
             if (SpawnerManager.AllSpawnersHaveAnother()) {
                 Debug.Log("Starting next wave");
                 GivePlayerMoney();
@@ -50,7 +48,6 @@ public class RoundManager : MonoBehaviour
             }
         }
         if (cropsLeft <= 0) { // we lost :(
-            Debug.Log("Out of crops");
             SceneManager.LoadScene( SceneManager.GetActiveScene().name );
         }
     }

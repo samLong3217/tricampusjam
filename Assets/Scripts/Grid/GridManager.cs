@@ -53,7 +53,11 @@ public class GridManager : MonoBehaviour
     /// <returns>Whether the object was successfully unregistered</returns>
     public static bool Unregister(GridObject toUnregister)
     {
-        return _instance._objects.Remove(toUnregister.Location);
+        bool result = _instance._objects.Remove(toUnregister.Location);
+        if (result) {
+            AIManager.ClearPaths();
+        }
+        return result;
     }
 
     /// <summary>
