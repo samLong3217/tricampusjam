@@ -2,6 +2,8 @@ using UnityEngine;
 
 public abstract class GridObject : MonoBehaviour
 {
+    private bool _registered = false;
+    
     protected virtual void Start()
     {
         Vector3 position = transform.position;
@@ -14,6 +16,7 @@ public abstract class GridObject : MonoBehaviour
         }
         else
         {
+            _registered = true;
             OnRegister(true);
         }
     }
@@ -29,6 +32,6 @@ public abstract class GridObject : MonoBehaviour
 
     protected virtual void OnDestroy()
     {
-        GridManager.Unregister(this);
+        if (_registered) GridManager.Unregister(this);
     }
 }

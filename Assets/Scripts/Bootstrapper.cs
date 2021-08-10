@@ -10,5 +10,6 @@ public class Bootstrapper : MonoBehaviour
         GridManager.SetRect(PlayRegion);
         gameObject.AddComponent<TargetManager>();
         gameObject.AddComponent<AIManager>();
+        gameObject.AddComponent<SpawnerManager>();
     }
 }

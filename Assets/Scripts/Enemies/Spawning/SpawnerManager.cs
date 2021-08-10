@@ -12,6 +12,8 @@ public class SpawnerManager : MonoBehaviour
     {
         Destroy(_instance);
         _instance = this;
+
+        _spawners = new HashSet<EnemySpawner>();
     }
 
     /// <summary>
