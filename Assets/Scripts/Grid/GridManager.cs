@@ -40,7 +40,7 @@ public class GridManager : MonoBehaviour
             return false;
         }
         
-        _instance._objects[toRegister.Location] = toRegister;
+        _instance._objects.Add(toRegister.Location, toRegister);
         return true;
     }
     
