@@ -22,11 +22,14 @@ public class EnemySpawner : MonoBehaviour
 
     private void Update()
     {
-        if (_waitTime > 0) _waitTime -= Time.deltaTime;
+        if (_waitTime > 0)
+        {
+            _waitTime -= Time.deltaTime;
+            if (_waitTime <= 0) SetWave(_activeWaveIndex, 0);
+            else return;
+        }
         
-        if (_waitTime <= 0) SetWave(_activeWaveIndex, 0);
-        else return;
-        
+        if (_activeWave == null) return;
         
         bool hasSpawnsLeft = false;
         
