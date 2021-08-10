@@ -13,12 +13,6 @@ public class AOETower : Tower
     private float fireTime;
     private bool fired; // you're fired
     private GameObject hitboxInstance;
-
-    public override void Start() {
-        base.Start();
-        fireTime = fireSpeed;
-    }
-
     public override void Update() {
         base.Update();
         fireTime -= Time.deltaTime;
@@ -32,6 +26,13 @@ public class AOETower : Tower
                 Debug.Log("destroyed hitbox");
             }
             fired = false;
+            fireTime = fireSpeed;
+        }
+    }
+
+    protected override void OnRegister(bool success) {
+        base.OnRegister(success);
+        if (success) {
             fireTime = fireSpeed;
         }
     }

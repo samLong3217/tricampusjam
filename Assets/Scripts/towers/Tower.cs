@@ -2,16 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tower : Wall, ITakesDamage
+public class Tower : Wall
 {
     public float totalLife = 10.0f; // how long it takes for the tower to decay
     public int cost = 10; // cost to build the tower
 
     private float remainingLife; 
-    public virtual void Start() {
-        base.Start();
-        remainingLife = totalLife;
-    }
 
     public virtual void Update() {
         remainingLife -= Time.deltaTime;
@@ -26,7 +22,8 @@ public class Tower : Wall, ITakesDamage
             if (!player.GetComponent<PlayerController>().PayForTower(cost)) {
                 Destroy(gameObject);
             }
-        }
+            remainingLife = totalLife;
+        } 
     }
 
     public override void TakeDamage(IDamager damager, float damage) {

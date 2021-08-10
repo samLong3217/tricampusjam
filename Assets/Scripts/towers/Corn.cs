@@ -4,7 +4,5 @@ using UnityEngine;
 
 public class Corn : Tower
 {
-    public override void Start() {
-        base.Start();
-    }  
+    
 }

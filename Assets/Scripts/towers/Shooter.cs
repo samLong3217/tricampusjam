@@ -10,12 +10,6 @@ public class Shooter : Tower
 
     private float fireTime;
 
-    public override void Start() {
-        base.Start();
-        // StartCoroutine("FireTower");
-        fireTime = fireSpeed;
-    }
-
     public override void Update() {
         base.Update();
         fireTime -= Time.deltaTime;
@@ -43,5 +37,12 @@ public class Shooter : Tower
             }
         }
         return closestEnemy;
+    }
+
+    protected override void OnRegister(bool success) {
+        base.OnRegister(success);
+        if (success) {
+            fireTime = fireSpeed;
+        }
     }
 }
