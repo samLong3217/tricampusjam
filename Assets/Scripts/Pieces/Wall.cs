@@ -4,7 +4,7 @@ public class Wall : GridObject, ITakesDamage
 
     public override IPathfindingNode GetPathfindingNode()
     {
-        return new BasicPathfindingNode(Location, Health * 10);
+        return new BasicPathfindingNode(Location, Health * 2 + 1);
     }
 
     public virtual void TakeDamage(IDamager damager, float damage)
