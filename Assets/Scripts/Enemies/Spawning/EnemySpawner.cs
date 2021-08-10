@@ -62,6 +62,7 @@ public class EnemySpawner : MonoBehaviour
     /// <param name="waitTime">An amount of time to wait before starting to spawn</param>
     public void SetWave(int index, float waitTime = 0)
     {
+        Debug.Log("Setting wave");
         if (waitTime != 0)
         {
             _activeWaveIndex = index;

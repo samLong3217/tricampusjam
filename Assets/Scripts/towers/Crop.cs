@@ -13,11 +13,14 @@ public class Crop : Tower, ITakesDamage
             GameObject player = GameObject.FindWithTag("Player");
             if (!player.GetComponent<PlayerController>().PlantCrop()) {
                 Destroy(gameObject);
+            } else {
+                RoundManager.incrementCrops();
             }
         }
     }
 
     public override void TakeDamage(IDamager damager, float damage) {
+        RoundManager.decrementCrops();
         Destroy(gameObject);
     }
 }

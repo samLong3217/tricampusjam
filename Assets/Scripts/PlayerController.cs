@@ -111,6 +111,7 @@ public class PlayerController : MonoBehaviour {
         healthCrops--;
         if (healthCrops <= 0) {
             state = State.Wave;
+            RoundManager.StartWavePhase();
         }
         return healthCrops >= 0;
     }

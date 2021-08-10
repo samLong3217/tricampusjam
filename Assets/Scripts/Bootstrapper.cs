@@ -11,5 +11,6 @@ public class Bootstrapper : MonoBehaviour
         gameObject.AddComponent<TargetManager>();
         gameObject.AddComponent<AIManager>();
         gameObject.AddComponent<SpawnerManager>();
+        gameObject.AddComponent<RoundManager>();
     }
 }
