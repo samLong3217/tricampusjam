@@ -22,10 +22,13 @@ public class EnemySpawner : MonoBehaviour
 
     private void Update()
     {
-        if (_waitTime > 0) _waitTime -= Time.deltaTime;
-        
-        if (_waitTime <= 0) SetWave(_activeWaveIndex, 0);
-        else return;
+        if (_waitTime > 0)
+        {
+            _waitTime -= Time.deltaTime;
+            if (_waitTime <= 0) SetWave(_activeWaveIndex, 0);
+            else return;
+        }
+        if (_timer == null) return;
         
         
         bool hasSpawnsLeft = false;
@@ -62,9 +65,9 @@ public class EnemySpawner : MonoBehaviour
     /// <param name="waitTime">An amount of time to wait before starting to spawn</param>
     public void SetWave(int index, float waitTime = 0)
     {
-        Debug.Log("Setting wave");
         if (waitTime != 0)
         {
+            Debug.Log("Setting wave");
             _activeWaveIndex = index;
             _waitTime = waitTime;
             return;

@@ -124,5 +124,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health: 30
-  totalLife: 10
+  totalLife: 60
   cost: 10

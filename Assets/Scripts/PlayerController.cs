@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour {
     public int money = 400;
 
     public int healthCrops = 10;
+    public int roundReward = 100;
 
     enum State {Crops, Wave}; // Can only place health crops in the crop phase
 
@@ -129,6 +130,13 @@ public class PlayerController : MonoBehaviour {
             Mathf.Round(vector3.y / gridSize) * gridSize,
             Mathf.Round(vector3.z / gridSize) * gridSize);
         return snapped + gridOffset ;
+    }
+
+    /// <summary>
+    /// Award the player money for copmpleting a round
+    /// </summary>
+    public void AwardRoundMoney() {
+        money += roundReward;
     }
 
     // Places a tower at the current selector position

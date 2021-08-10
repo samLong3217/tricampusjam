@@ -43,14 +43,24 @@ public class RoundManager : MonoBehaviour
             Debug.Log("Finished with current wave");
             if (SpawnerManager.AllSpawnersHaveAnother()) {
                 Debug.Log("Starting next wave");
-                SpawnerManager.IncrementAllWaves(4.0f);
+                GivePlayerMoney();
+                SpawnerManager.IncrementAllWaves(8.0f);
             } else { // we beat all waves, restart
-                 SceneManager.LoadScene( SceneManager.GetActiveScene().name );
+                if (GameObject.FindGameObjectsWithTag("enemy") == null) {
+                    SceneManager.LoadScene( SceneManager.GetActiveScene().name );
+                }
             }
         }
         if (cropsLeft <= 0) { // we lost :(
             Debug.Log("Out of crops");
             SceneManager.LoadScene( SceneManager.GetActiveScene().name );
+        }
+    }
+
+    private void GivePlayerMoney() {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null) {
+            player.GetComponent<PlayerController>().AwardRoundMoney();
         }
     }
 }

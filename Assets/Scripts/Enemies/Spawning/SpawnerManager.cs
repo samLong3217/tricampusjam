@@ -47,6 +47,7 @@ public class SpawnerManager : MonoBehaviour
         foreach (EnemySpawner spawner in _instance._spawners)
         {
             if (spawner == null) continue;
+            Debug.Log("Setting wave for spawner...");
             spawner.SetWave(index, waitTime);
         }
     }
