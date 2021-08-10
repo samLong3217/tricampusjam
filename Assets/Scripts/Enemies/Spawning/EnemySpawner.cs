@@ -5,6 +5,8 @@ public class EnemySpawner : MonoBehaviour
 {
     public List<WaveData> Waves;
 
+    private float _waitTime;
+    
     private int _activeWaveIndex;
     private WaveData _activeWave;
     private float[] _timer;
@@ -12,11 +14,17 @@ public class EnemySpawner : MonoBehaviour
 
     private void Start()
     {
-        SetWave(0);
+        //SetWave(0);
     }
 
     private void Update()
     {
+        if (_waitTime > 0) _waitTime -= Time.deltaTime;
+        
+        if (_waitTime <= 0) SetWave(_activeWaveIndex, 0);
+        else return;
+        
+        
         bool hasSpawnsLeft = false;
         
         for (int i = 0; i < _timer.Length; i++)
@@ -39,8 +47,15 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-    private void SetWave(int index)
+    public void SetWave(int index, float waitTime = 0)
     {
+        if (waitTime != 0)
+        {
+            _activeWaveIndex = index;
+            _waitTime = waitTime;
+            return;
+        }
+        
         if (index >= Waves.Count)
         {
             //Destroy(gameObject);
