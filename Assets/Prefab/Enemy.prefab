@@ -10,11 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 3031652143742877168}
   - component: {fileID: 3031652143742877183}
-  - component: {fileID: 4772242094008236492}
   - component: {fileID: 8002659700226845411}
-  - component: {fileID: 5519093004802354938}
   - component: {fileID: 2377037821277768554}
   - component: {fileID: 292087564103930519}
+  - component: {fileID: 5766915162490263196}
   m_Layer: 8
   m_Name: Enemy
   m_TagString: enemy
@@ -88,48 +87,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &4772242094008236492
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3031652143742877182}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 0.16, y: 0.16}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
 --- !u!114 &8002659700226845411
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3031652143742877182}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b185a6b8111f63343a67d5240a7495c5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hp: 5
-  Speed: 2
-  HopTime: 0.3
---- !u!114 &5519093004802354938
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -144,6 +102,7 @@ MonoBehaviour:
   hp: 5
   Speed: 10
   HopTime: 0.2
+  Rigidbody2d: {fileID: 2377037821277768554}
 --- !u!50 &2377037821277768554
 Rigidbody2D:
   serializedVersion: 4
@@ -181,3 +140,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.2
+--- !u!58 &5766915162490263196
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3031652143742877182}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.25

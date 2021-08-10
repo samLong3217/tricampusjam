@@ -14,11 +14,6 @@ public class Enemy : MonoBehaviour
     private float _hopCooldown = 0;
     
     public Rigidbody2D Rigidbody2d;
-
-    private void Start()
-    {
-        Rigidbody2d = GetComponent<Rigidbody2D>();
-    }
     
     private void Update()
     {
@@ -35,10 +30,10 @@ public class Enemy : MonoBehaviour
         Vector2 translation = new Vector2(target.x - position.x, target.y - position.y);
         
         _hopCooldown -= Time.deltaTime;
-        if (_hopCooldown <= 0)
+        while (_hopCooldown <= 0)
         {
             Rigidbody2d.AddForce(translation.normalized * (Speed * Rigidbody2d.mass * HopTime), ForceMode2D.Impulse);
-            _hopCooldown = HopTime * (0.75f + 0.5f * Random.value);
+            _hopCooldown += HopTime * (0.75f + 0.5f * Random.value);
         }
         transform.rotation = Quaternion.identity;
 

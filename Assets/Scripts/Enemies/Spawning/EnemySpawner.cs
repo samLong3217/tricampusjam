@@ -28,13 +28,14 @@ public class EnemySpawner : MonoBehaviour
             while (_timer[i] > 1 / _activeWave[i].Rate)
             {
                 _timer[i] -= 1 / _activeWave[i].Rate;
+                _spawnsLeft[i]--;
                 SpawnEnemy(_activeWave[i].Prefab);
             }
         }
 
         if (!hasSpawnsLeft)
         {
-            SetWave(_activeWaveIndex + 1);
+            //SetWave(_activeWaveIndex + 1);
         }
     }
 
