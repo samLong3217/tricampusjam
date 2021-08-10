@@ -764,19 +764,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1338384423323339858, guid: 53d57f05b4fb12a4ea35c2f873a540fb,
-        type: 3}
-      propertyPath: orthographic size
-      value: 3.5
-      objectReference: {fileID: 0}
     - target: {fileID: 1338384424006398800, guid: 53d57f05b4fb12a4ea35c2f873a540fb,
         type: 3}
       propertyPath: m_Name
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 1338384424006398800, guid: 53d57f05b4fb12a4ea35c2f873a540fb,
-        type: 3}
-      propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 1338384424006398802, guid: 53d57f05b4fb12a4ea35c2f873a540fb,
@@ -833,60 +823,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1971835360432405737, guid: 53d57f05b4fb12a4ea35c2f873a540fb,
-        type: 3}
-      propertyPath: runSpeed
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 1971835360432405737, guid: 53d57f05b4fb12a4ea35c2f873a540fb,
-        type: 3}
-      propertyPath: towerPrefab
-      value: 
-      objectReference: {fileID: 6257853822612141611, guid: e17e93569d9ae95439b4444fff9bf181,
-        type: 3}
-    - target: {fileID: 1971835360432405737, guid: 53d57f05b4fb12a4ea35c2f873a540fb,
-        type: 3}
-      propertyPath: towerPrefab.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1971835360432405737, guid: 53d57f05b4fb12a4ea35c2f873a540fb,
-        type: 3}
-      propertyPath: towerPrefab.Array.data[0]
-      value: 
-      objectReference: {fileID: 6257853822612141611, guid: e17e93569d9ae95439b4444fff9bf181,
-        type: 3}
-    - target: {fileID: 1971835360432405737, guid: 53d57f05b4fb12a4ea35c2f873a540fb,
-        type: 3}
-      propertyPath: towerPrefab.Array.data[1]
-      value: 
-      objectReference: {fileID: 1282265509141767061, guid: 6d3ed38eb0ce33d47958a33522596f94,
-        type: 3}
-    - target: {fileID: 1971835360432405737, guid: 53d57f05b4fb12a4ea35c2f873a540fb,
-        type: 3}
-      propertyPath: towerPrefab.Array.data[2]
-      value: 
-      objectReference: {fileID: 1622149526062023523, guid: bcc6d09adc00137478506f5e144cea25,
-        type: 3}
-    - target: {fileID: 2453385314467538785, guid: 53d57f05b4fb12a4ea35c2f873a540fb,
-        type: 3}
-      propertyPath: m_Size.x
-      value: 0.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 2453385314467538785, guid: 53d57f05b4fb12a4ea35c2f873a540fb,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 0.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 5304343688825913512, guid: 53d57f05b4fb12a4ea35c2f873a540fb,
-        type: 3}
-      propertyPath: m_AngularDrag
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5304343688825913512, guid: 53d57f05b4fb12a4ea35c2f873a540fb,
-        type: 3}
-      propertyPath: m_Constraints
-      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53d57f05b4fb12a4ea35c2f873a540fb, type: 3}

@@ -5,9 +5,15 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
     public float runSpeed = 20.0f;
     public GameObject[] towerPrefab;
+    public GameObject healthCrop;
     public float offset = 1.0f;
     public int money = 400;
 
+    public int healthCrops = 10;
+
+    enum State {Crops, Wave}; // Can only place health crops in the crop phase
+
+    private State state;
     private Vector3 gridOffset = new Vector3(0.0f, 0.0f, 0.0f); // offset for the grid. Currently at 0.0 to center each tile 
     private int selectedTower;
     private KeyCode[] keyMapping;
@@ -31,6 +37,8 @@ public class PlayerController : MonoBehaviour {
         for (int i = 0; i < towerPrefab.Length; i++) {
             keyMapping[i] = (KeyCode) System.Enum.Parse(typeof(KeyCode), "Alpha" + (i + 1)) ;
         }
+
+        state = State.Crops;
     }
 
     private void Update () {
@@ -97,6 +105,16 @@ public class PlayerController : MonoBehaviour {
         return false;
     }
 
+    // Attempts to plant crop, decrementing number avaialble
+    // returns false if no more crops to plant
+    public bool PlantCrop() {
+        healthCrops--;
+        if (healthCrops <= 0) {
+            state = State.Wave;
+        }
+        return healthCrops >= 0;
+    }
+
     /// <summary>
     /// Snap Vector3 to nearest grid position
     /// </summary>
@@ -114,13 +132,10 @@ public class PlayerController : MonoBehaviour {
 
     // Places a tower at the current selector position
     private void PlaceTower() {
-        GameObject tower =  Instantiate(towerPrefab[selectedTower], selector.transform.position, Quaternion.identity);
-        // if (tower.GetComponent<Tower>().cost > money) {
-        //     Destroy(tower);
-        //     Debug.Log("No money dog");
-        // } else {
-        //     money -= tower.GetComponent<Tower>().cost;
-        //     Debug.Log(money);
-        // }
+        if (state == State.Crops) {
+            Instantiate(healthCrop, selector.transform.position, Quaternion.identity);
+        } else {
+            Instantiate(towerPrefab[selectedTower], selector.transform.position, Quaternion.identity);
+        }
     }
 }

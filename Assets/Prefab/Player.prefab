@@ -59,7 +59,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 1
+  orthographic size: 3.5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -185,13 +185,13 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &1971835360432405737
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -204,11 +204,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acc936a1e9f02b14fa7739ab86c99808, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  runSpeed: 50
-  towerPrefab: []
-  towerCost: 
+  runSpeed: 200
+  towerPrefab:
+  - {fileID: 6257853822612141611, guid: e17e93569d9ae95439b4444fff9bf181, type: 3}
+  - {fileID: 1282265509141767061, guid: 6d3ed38eb0ce33d47958a33522596f94, type: 3}
+  - {fileID: 1622149526062023523, guid: bcc6d09adc00137478506f5e144cea25, type: 3}
+  healthCrop: {fileID: 8137743710268076978, guid: 36c386f980db11c4196fb68799e9fe76,
+    type: 3}
   offset: 1
   money: 400
+  healthCrops: 10
 --- !u!61 &2453385314467538785
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -233,7 +238,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.16, y: 0.16}
+  m_Size: {x: 0.75, y: 0.75}
   m_EdgeRadius: 0
 --- !u!1001 &4079075632934180297
 PrefabInstance:

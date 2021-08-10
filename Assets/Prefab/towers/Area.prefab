@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1582063372683118111}
   m_Layer: 0
   m_Name: Area
-  m_TagString: Untagged
+  m_TagString: takes damage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -96,7 +96,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78112e5320f036e4ab525246f55c9370, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  decayTime: 10
+  Health: 30
+  totalLife: 10
   cost: 10
   fireSpeed: 4
   damage: 3
