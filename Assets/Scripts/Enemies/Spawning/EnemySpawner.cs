@@ -65,6 +65,7 @@ public class EnemySpawner : MonoBehaviour
     /// <param name="waitTime">An amount of time to wait before starting to spawn</param>
     public void SetWave(int index, float waitTime = 0)
     {
+        _spawnsLeft = new [] {1};
         if (waitTime != 0)
         {
             Debug.Log("Setting wave");
@@ -96,6 +97,7 @@ public class EnemySpawner : MonoBehaviour
     public void IncrementWave(float waitTime = 0)
     {
         SetWave(_activeWaveIndex + 1, waitTime);
+        Debug.Log("Active wave is now " + _activeWaveIndex);
     }
 
     /// <summary>

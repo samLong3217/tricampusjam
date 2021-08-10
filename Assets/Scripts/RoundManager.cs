@@ -39,16 +39,14 @@ public class RoundManager : MonoBehaviour
         if (state == State.Crops) {
             return;
         }
-        if (SpawnerManager.AllSpawnersDoneCurrent()) {
+        if (SpawnerManager.AllSpawnersDoneCurrent() && GameObject.FindGameObjectWithTag("enemy") == null) {
             Debug.Log("Finished with current wave");
             if (SpawnerManager.AllSpawnersHaveAnother()) {
                 Debug.Log("Starting next wave");
                 GivePlayerMoney();
-                SpawnerManager.IncrementAllWaves(8.0f);
+                SpawnerManager.IncrementAllWaves(3.0f);
             } else { // we beat all waves, restart
-                if (GameObject.FindGameObjectsWithTag("enemy") == null) {
-                    SceneManager.LoadScene( SceneManager.GetActiveScene().name );
-                }
+                SceneManager.LoadScene( SceneManager.GetActiveScene().name );
             }
         }
         if (cropsLeft <= 0) { // we lost :(

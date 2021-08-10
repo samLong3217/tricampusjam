@@ -314,7 +314,7 @@ GameObject:
   - component: {fileID: 328509344}
   - component: {fileID: 328509345}
   m_Layer: 0
-  m_Name: Spawner (1)
+  m_Name: Spawner topLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -347,7 +347,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Waves:
-  - {fileID: 11400000, guid: 0d5529dc5fa89504abd8b2d222ebbb64, type: 2}
+  - {fileID: 11400000, guid: 9e50061740610a94da2780cc26d1db24, type: 2}
+  - {fileID: 11400000, guid: cabacda022ee1684397c94384fe6a248, type: 2}
+  - {fileID: 11400000, guid: 7330cdaf626924f4885ef18fc4286438, type: 2}
+  - {fileID: 11400000, guid: 7330cdaf626924f4885ef18fc4286438, type: 2}
+  - {fileID: 11400000, guid: 9e50061740610a94da2780cc26d1db24, type: 2}
+  - {fileID: 11400000, guid: 082670fea2ad43b4cbba645f0c15569c, type: 2}
+  - {fileID: 11400000, guid: 7330cdaf626924f4885ef18fc4286438, type: 2}
+  - {fileID: 11400000, guid: 7330cdaf626924f4885ef18fc4286438, type: 2}
+  - {fileID: 11400000, guid: 9e50061740610a94da2780cc26d1db24, type: 2}
+  - {fileID: 11400000, guid: 082670fea2ad43b4cbba645f0c15569c, type: 2}
 --- !u!4 &381591809 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6653539768269846705, guid: dc2c0d926bada4a47836f28643e5d260,
@@ -578,7 +587,7 @@ GameObject:
   - component: {fileID: 513997993}
   - component: {fileID: 513997994}
   m_Layer: 0
-  m_Name: Spawner
+  m_Name: Spawner botLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -611,7 +620,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Waves:
-  - {fileID: 11400000, guid: 0d5529dc5fa89504abd8b2d222ebbb64, type: 2}
+  - {fileID: 11400000, guid: 7330cdaf626924f4885ef18fc4286438, type: 2}
+  - {fileID: 11400000, guid: 7330cdaf626924f4885ef18fc4286438, type: 2}
+  - {fileID: 11400000, guid: 9e50061740610a94da2780cc26d1db24, type: 2}
+  - {fileID: 11400000, guid: cabacda022ee1684397c94384fe6a248, type: 2}
+  - {fileID: 11400000, guid: 9e50061740610a94da2780cc26d1db24, type: 2}
+  - {fileID: 11400000, guid: 082670fea2ad43b4cbba645f0c15569c, type: 2}
+  - {fileID: 11400000, guid: 7330cdaf626924f4885ef18fc4286438, type: 2}
+  - {fileID: 11400000, guid: 7330cdaf626924f4885ef18fc4286438, type: 2}
+  - {fileID: 11400000, guid: 9e50061740610a94da2780cc26d1db24, type: 2}
+  - {fileID: 11400000, guid: 082670fea2ad43b4cbba645f0c15569c, type: 2}
 --- !u!4 &532784421 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6653539768269846705, guid: dc2c0d926bada4a47836f28643e5d260,
@@ -1281,9 +1299,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayRegion:
-    x: 0
+    x: -4
     y: -3
-    width: 14
+    width: 22
     height: 11
 --- !u!4 &1933788440
 Transform:
@@ -1460,7 +1478,7 @@ GameObject:
   - component: {fileID: 2135825896}
   - component: {fileID: 2135825897}
   m_Layer: 0
-  m_Name: Spawner (2)
+  m_Name: Spawner right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1493,7 +1511,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Waves:
-  - {fileID: 11400000, guid: 0d5529dc5fa89504abd8b2d222ebbb64, type: 2}
+  - {fileID: 11400000, guid: 7330cdaf626924f4885ef18fc4286438, type: 2}
+  - {fileID: 11400000, guid: 7330cdaf626924f4885ef18fc4286438, type: 2}
+  - {fileID: 11400000, guid: 7330cdaf626924f4885ef18fc4286438, type: 2}
+  - {fileID: 11400000, guid: 7330cdaf626924f4885ef18fc4286438, type: 2}
+  - {fileID: 11400000, guid: 7330cdaf626924f4885ef18fc4286438, type: 2}
+  - {fileID: 11400000, guid: 7330cdaf626924f4885ef18fc4286438, type: 2}
+  - {fileID: 11400000, guid: 9e50061740610a94da2780cc26d1db24, type: 2}
+  - {fileID: 11400000, guid: cabacda022ee1684397c94384fe6a248, type: 2}
+  - {fileID: 11400000, guid: 9e50061740610a94da2780cc26d1db24, type: 2}
+  - {fileID: 11400000, guid: cabacda022ee1684397c94384fe6a248, type: 2}
 --- !u!1001 &1338384422901068845
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1501,6 +1528,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1338384423323339858, guid: 53d57f05b4fb12a4ea35c2f873a540fb,
+        type: 3}
+      propertyPath: orthographic size
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 1338384424006398800, guid: 53d57f05b4fb12a4ea35c2f873a540fb,
         type: 3}
       propertyPath: m_Name
