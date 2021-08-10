@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class AIManager : MonoBehaviour
 {
-    public static bool DebugMode = false;
-    
     private static AIManager _instance;
     private Dictionary<Vector2Int, AINode> _pathNodes;
     
@@ -86,7 +84,7 @@ public class AIManager : MonoBehaviour
                 _instance._pathNodes[path[i].Location()] = lastNode;
             }
 
-            if (DebugMode)
+            if (DebugMode.Enabled)
             {
                 Vector2 loc0 = path[i].Location();
                 Vector2 loc1 = path[i + 1].Location();
