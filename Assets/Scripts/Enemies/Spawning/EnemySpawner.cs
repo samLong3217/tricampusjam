@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -15,6 +16,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void Start()
     {
+        SpawnerManager.Register(this);
         //SetWave(0);
     }
 
@@ -48,6 +50,16 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
+    private void OnDestroy()
+    {
+        SpawnerManager.Unregister(this);
+    }
+
+    /// <summary>
+    /// Sets the spawner to the designated wave and starts spawning.
+    /// </summary>
+    /// <param name="index">The wave to move to</param>
+    /// <param name="waitTime">An amount of time to wait before starting to spawn</param>
     public void SetWave(int index, float waitTime = 0)
     {
         if (waitTime != 0)
@@ -73,11 +85,26 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Sets the spawner to the next wave and starts spawning.
+    /// </summary>
+    /// <param name="waitTime">An amount of time to wait before starting to spawn</param>
+    public void IncrementWave(float waitTime = 0)
+    {
+        SetWave(_activeWaveIndex + 1, waitTime);
+    }
+
+    /// <summary>
+    /// Checks if the current wave has completed spawning.
+    /// </summary>
     public bool DoneSpawningCurrent()
     {
         return !_spawnsLeft.Any(n => n > 0);
     }
 
+    /// <summary>
+    /// Checks if there is a wave after this one.
+    /// </summary>
     public bool HasAnotherWave()
     {
         return _activeWaveIndex < Waves.Count - 1;

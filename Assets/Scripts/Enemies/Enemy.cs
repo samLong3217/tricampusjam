@@ -50,7 +50,7 @@ public class Enemy : MonoBehaviour, IDamager
             AttackCollider.enabled = true;
         }
 
-        if (AIManager.DebugMode)
+        if (DebugMode.Enabled)
         {
             Debug.DrawLine(position, (Vector2) target, Color.green, 0, false);
         }

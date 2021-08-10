@@ -6,7 +6,7 @@ public class PlayerTarget : GridObject
     {
         TargetManager.Register(this);
         GridManager.Unregister(this);
-        AIManager.DebugMode = true;
+        DebugMode.Enabled = true;
     }
     
     public override IPathfindingNode GetPathfindingNode()
