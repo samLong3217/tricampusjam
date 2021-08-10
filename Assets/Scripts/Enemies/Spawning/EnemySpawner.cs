@@ -28,8 +28,8 @@ public class EnemySpawner : MonoBehaviour
             if (_waitTime <= 0) SetWave(_activeWaveIndex, 0);
             else return;
         }
-        if (_timer == null) return;
         
+        if (_activeWave == null) return;
         
         bool hasSpawnsLeft = false;
         
