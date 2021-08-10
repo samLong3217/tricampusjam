@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
@@ -70,6 +71,16 @@ public class EnemySpawner : MonoBehaviour
         {
             _spawnsLeft[i] = _activeWave[i].Count;
         }
+    }
+
+    public bool DoneSpawningCurrent()
+    {
+        return !_spawnsLeft.Any(n => n > 0);
+    }
+
+    public bool HasAnotherWave()
+    {
+        return _activeWaveIndex < Waves.Count - 1;
     }
 
     private void SpawnEnemy(GameObject prefab)
