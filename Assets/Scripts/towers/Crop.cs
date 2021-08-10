@@ -4,6 +4,21 @@ using UnityEngine;
 
 public class Crop : Tower, ITakesDamage
 {
+    protected override void Start()
+    {
+        Vector3 position = transform.position;
+        Location = new Vector2Int(Mathf.RoundToInt(position.x), Mathf.RoundToInt(position.y));
+
+        if (!TargetManager.Register(this))
+        {
+            OnRegister(false);
+            Destroy(gameObject);
+        }
+        else
+        {
+            OnRegister(true);
+        }
+    }
     public override void Update()
     {
         // do nothing. we need to overide the default tower behavior

@@ -41,6 +41,7 @@ public class GridManager : MonoBehaviour
         }
         
         _instance._objects.Add(toRegister.Location, toRegister);
+        AIManager.ClearPaths();
         return true;
     }
     
