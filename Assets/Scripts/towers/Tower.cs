@@ -21,7 +21,6 @@ public class Tower : Wall
     }
 
     protected override void OnRegister(bool success) {
-        Debug.Log("We getting this far?" + success);
         if (success) {
             GameObject player = GameObject.FindWithTag("Player");
             if (!player.GetComponent<PlayerController>().PayForTower(cost)) {
