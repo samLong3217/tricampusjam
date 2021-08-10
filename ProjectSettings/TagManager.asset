@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - enemy
+  - takes damage
   layers:
   - Default
   - TransparentFX

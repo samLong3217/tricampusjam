@@ -102,6 +102,10 @@ MonoBehaviour:
   hp: 5
   Speed: 10
   HopTime: 0.2
+  AttackDamage: 1
+  AttackPushbackAmount: 5
+  AttackCooldown: 0.5
+  AttackCollider: {fileID: 5766915162490263196}
   Rigidbody2d: {fileID: 2377037821277768554}
 --- !u!50 &2377037821277768554
 Rigidbody2D:
