@@ -14,9 +14,9 @@ public class Wall : GridObject, ITakesDamage
         {
             Destroy(gameObject);
         }
-        
-        damager.DealtDamage(this, damage);
-        
+
+        damager?.DealtDamage(this, damage);
+
         if (DebugMode.Enabled) {
             print("Ouch: " + Health);
         }
