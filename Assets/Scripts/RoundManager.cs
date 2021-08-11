@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class RoundManager : MonoBehaviour
 {
+    private static int wave = 1;
     private enum State {Crops, Wave}; // Can only place health crops in the crop phase
     private static State state;
     private static RoundManager _instance;
@@ -33,6 +34,14 @@ public class RoundManager : MonoBehaviour
         cropsLeft--;
     }
 
+    public static int GetCrops() {
+        return cropsLeft;
+    }
+
+    public static int GetWave() {
+        return wave;
+    }
+
     private void Update()
     {
         if (state == State.Crops) {
@@ -43,6 +52,7 @@ public class RoundManager : MonoBehaviour
                 Debug.Log("Starting next wave");
                 GivePlayerMoney();
                 SpawnerManager.IncrementAllWaves(3.0f);
+                wave++;
             } else { // we beat all waves, restart
                 SceneManager.LoadScene( SceneManager.GetActiveScene().name );
             }
