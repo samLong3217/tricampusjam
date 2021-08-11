@@ -82,6 +82,14 @@ public class PlayerController : MonoBehaviour {
 
     }
 
+    public void ChangeTower(int i) {
+        selectedTower = i;
+    }
+
+    public bool IsWavePhase() {
+        return State.Wave == state;
+    }
+
     private void FixedUpdate() {  
         body.velocity = new Vector2(horizontal, vertical);
         body.velocity = body.velocity.normalized * runSpeed * Time.deltaTime;

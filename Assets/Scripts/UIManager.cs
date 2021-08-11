@@ -8,6 +8,7 @@ public class UIManager : MonoBehaviour
     public Sprite[] goldNumbers;
     public Sprite[] redNumbers;
     public Sprite[] healthSliderSprites;
+    public Sprite[] tutorialTextSprites;
 
     public GameObject waveTens;
     public GameObject waveOnes;
@@ -17,6 +18,22 @@ public class UIManager : MonoBehaviour
     public GameObject moneyOnes;
     public GameObject healthSlider;
     public RectTransform waveSlider;
+    public GameObject player;
+    public GameObject cropButton;
+    public GameObject abilityButtons;
+    public GameObject tutorialText;
+    public float tutorialTime = 10.0f;
+    public GameObject tutorialArrowPart1;
+    public GameObject tutorialArrowsPart2;
+    private PlayerController playerController;
+    private float tutorialHalfPoint;
+    private bool tutorialPart2Init = false;
+
+    void Awake()
+    {
+        playerController = player.GetComponent<PlayerController>();
+        tutorialHalfPoint = tutorialTime / 2;
+    }
 
     void Update()
     {
@@ -29,10 +46,31 @@ public class UIManager : MonoBehaviour
         waveSlider.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 48 * SpawnerManager.Completion());
 
         // update money
-        GameObject player = GameObject.FindWithTag("Player");
-        int money = player.GetComponent<PlayerController>().money;
+        int money = playerController.money;
         moneyHundreds.GetComponent<Image>().sprite = goldNumbers[money / 100];
         moneyTens.GetComponent<Image>().sprite = goldNumbers[money / 10 % 10];
         moneyOnes.GetComponent<Image>().sprite = goldNumbers[money % 10];
+
+        if (playerController.IsWavePhase()) {
+            cropButton.SetActive(false);
+            abilityButtons.SetActive(true);
+            tutorialTime -= Time.deltaTime;
+            if (!tutorialPart2Init) {
+                tutorialArrowsPart2.SetActive(true);
+                tutorialArrowPart1.SetActive(false);
+                tutorialPart2Init = !tutorialPart2Init;
+            }
+            if (tutorialTime >= tutorialHalfPoint) {
+                tutorialText.GetComponent<Image>().sprite = tutorialTextSprites[1];
+            } else {
+                tutorialText.GetComponent<Image>().sprite = tutorialTextSprites[2];
+            }
+            if (tutorialTime <= 0) {
+                tutorialText.SetActive(false);
+            }
+        } else {
+            cropButton.SetActive(true);
+            abilityButtons.SetActive(false);
+        }
     }
 }
