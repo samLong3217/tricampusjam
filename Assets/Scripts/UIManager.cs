@@ -16,6 +16,7 @@ public class UIManager : MonoBehaviour
     public GameObject moneyTens;
     public GameObject moneyOnes;
     public GameObject healthSlider;
+    public RectTransform waveSlider;
 
     void Update()
     {
@@ -24,6 +25,8 @@ public class UIManager : MonoBehaviour
         waveOnes.GetComponent<Image>().sprite = redNumbers[RoundManager.GetWave() % 10];
         // update health
         healthSlider.GetComponent<Image>().sprite = healthSliderSprites[5 - RoundManager.GetCrops()];
+        // update wave slider
+        waveSlider.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 48 * SpawnerManager.Completion());
 
         // update money
         GameObject player = GameObject.FindWithTag("Player");

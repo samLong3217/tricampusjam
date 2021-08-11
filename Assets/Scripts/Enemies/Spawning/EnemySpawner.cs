@@ -116,8 +116,26 @@ public class EnemySpawner : MonoBehaviour
         return _activeWaveIndex < Waves.Count - 1;
     }
 
+    /// <summary>
+    /// The number of spawns remaining in this wave
+    /// </summary>
+    public int RemainingSpawnCount()
+    {
+        if (_spawnsLeft == null) return 0;
+        return _spawnsLeft.Sum();
+    }
+
+    /// <summary>
+    /// The number of spawns total in this wave
+    /// </summary>
+    public int WaveSpawnCount()
+    {
+        if (_activeWave == null) return 0;
+        return _activeWave.Components.Sum(x => x.Count);
+    }
+
     private void SpawnEnemy(GameObject prefab)
     {
-        Instantiate(prefab, this.transform.position, Quaternion.identity);
+        Instantiate(prefab, transform.position, Quaternion.identity);
     }
 }

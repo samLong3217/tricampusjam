@@ -80,4 +80,16 @@ public class SpawnerManager : MonoBehaviour
     {
         return _instance._spawners.All(s => s == null || s.HasAnotherWave());
     }
+
+    /// <summary>
+    /// A float from 0 to 1 representing how much of this wave has been completed
+    /// </summary>
+    public static float Completion()
+    {
+        HashSet<EnemySpawner> spawners = _instance._spawners;
+        float total = spawners.Sum(x => x.WaveSpawnCount());
+        if (total == 0) return 0;
+        float remaining = spawners.Sum(x => x.RemainingSpawnCount());
+        return 1 - remaining / total;
+    }
 }
