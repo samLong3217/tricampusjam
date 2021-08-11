@@ -31,4 +31,9 @@ public abstract class GridObject : MonoBehaviour
     {
         GridManager.Unregister(this);
     }
+
+    public virtual void Sell()
+    {
+        Destroy(gameObject);
+    }
 }

@@ -1354,6 +1354,7 @@ MonoBehaviour:
   - {fileID: 9092588183404624990, guid: 4d558a0acd0f0f5439718d65095123f2, type: 3}
   - {fileID: -7303908195100079094, guid: 4d558a0acd0f0f5439718d65095123f2, type: 3}
   - {fileID: 8099221125636622559, guid: 4d558a0acd0f0f5439718d65095123f2, type: 3}
+  tutorialTextSprites: []
   waveTens: {fileID: 1603928201}
   waveOnes: {fileID: 2073031343}
   moneyHundreds: {fileID: 125980360}
@@ -1364,6 +1365,10 @@ MonoBehaviour:
   player: {fileID: 1497023528}
   cropButton: {fileID: 2023679693}
   abilityButtons: {fileID: 1712959831}
+  tutorialText: {fileID: 0}
+  tutorialTime: 10
+  tutorialArrowPart1: {fileID: 0}
+  tutorialArrowsPart2: {fileID: 0}
 --- !u!114 &777514919
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2953,11 +2958,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b90dfa6eba071a1478cfea8ca6ac41a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayRegion:
-    x: -6
-    y: -3
-    width: 24
-    height: 11
+  MapData: {fileID: 11400000, guid: b1cd8d3041411844d8c8c953779d71fc, type: 2}
 --- !u!4 &1933788440
 Transform:
   m_ObjectHideFlags: 0
@@ -3373,11 +3374,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1282265509141767061, guid: 6d3ed38eb0ce33d47958a33522596f94,
         type: 3}
-    - target: {fileID: 5304343688825913512, guid: 53d57f05b4fb12a4ea35c2f873a540fb,
-        type: 3}
-      propertyPath: m_Interpolate
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53d57f05b4fb12a4ea35c2f873a540fb, type: 3}
 --- !u!1001 &7616382632299163234

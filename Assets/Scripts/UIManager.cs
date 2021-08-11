@@ -46,7 +46,7 @@ public class UIManager : MonoBehaviour
         waveSlider.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 48 * SpawnerManager.Completion());
 
         // update money
-        int money = playerController.money;
+        int money = MoneyManager.GetMoney();
         moneyHundreds.GetComponent<Image>().sprite = goldNumbers[money / 100];
         moneyTens.GetComponent<Image>().sprite = goldNumbers[money / 10 % 10];
         moneyOnes.GetComponent<Image>().sprite = goldNumbers[money % 10];

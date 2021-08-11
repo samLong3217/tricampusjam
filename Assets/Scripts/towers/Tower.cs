@@ -3,7 +3,6 @@ using UnityEngine;
 public class Tower : Wall
 {
     public float Lifespan = 10.0f; // how long it takes for the tower to decay
-    public int cost = 10; // cost to build the tower
 
     private float _decayPerSecond;
 
@@ -11,13 +10,19 @@ public class Tower : Wall
         TakeDamage(null, _decayPerSecond);
     }
 
+    public virtual int GetCost()
+    {
+        return 10;
+    }
+
     protected override void OnRegister(bool success) {
         if (success) {
-            GameObject player = GameObject.FindWithTag("Player");
-            if (!player.GetComponent<PlayerController>().PayForTower(cost)) {
+            if (!MoneyManager.Spend(GetCost()))
+            {
                 Destroy(gameObject);
+                return;
             }
-
+            
             _decayPerSecond = Health / Lifespan * Time.deltaTime;
         } 
     }

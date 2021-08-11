@@ -22,6 +22,7 @@ public class TargetManager : MonoBehaviour
     /// <returns>Whether the registration was successful</returns>
     public static bool Register(GridObject toRegister)
     {
+        print(toRegister.Location);
         if (GridManager.Register(toRegister))
         {
             _instance._targets.Add(toRegister);

@@ -1,11 +1,18 @@
 using UnityEngine;
 using System.Collections;
 
-public class CameraFollow : MonoBehaviour {
+public class CameraFollow : MonoBehaviour
+{
+    public static Camera MainCamera;
     
     public GameObject objectToFollow;
     
     public float speed = 2.0f;
+
+    private void Awake()
+    {
+        MainCamera = GetComponent<Camera>();
+    }
     
     void Update () {
         float interpolation = speed * Time.deltaTime;

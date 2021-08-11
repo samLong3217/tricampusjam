@@ -7,14 +7,6 @@ public class GridManager : MonoBehaviour
     private Dictionary<Vector2Int, GridObject> _objects;
     private RectInt _validRegion;
 
-    /// <summary>
-    /// Sets the region in which this GridManager is allowed to handle objects
-    /// </summary>
-    /// <param name="validRegion"></param>
-    public static void SetRect(RectInt validRegion)
-    {
-        _instance._validRegion = new RectInt(validRegion.position, validRegion.size + Vector2Int.one);
-    }
 
     private void Awake()
     {
@@ -22,6 +14,12 @@ public class GridManager : MonoBehaviour
         _instance = this;
 
         _objects = new Dictionary<Vector2Int, GridObject>();
+        SetRect(Bootstrapper.Instance.MapData.PlayRegion);
+    }
+    
+    private static void SetRect(RectInt validRegion)
+    {
+        _instance._validRegion = new RectInt(validRegion.position, validRegion.size + Vector2Int.one);
     }
 
     /// <summary>

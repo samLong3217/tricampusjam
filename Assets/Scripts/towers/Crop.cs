@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Crop : Tower, ITakesDamage
+public class Crop : Wall, ITakesDamage
 {
     protected override void Start()
     {
@@ -17,25 +17,12 @@ public class Crop : Tower, ITakesDamage
             OnRegister(true);
         }
     }
-    
-    public override void Update()
-    {
-        // do nothing. we need to overide the default tower behavior
-    }
 
     protected override void OnRegister(bool success)
     {
         if (success)
         {
-            GameObject player = GameObject.FindWithTag("Player");
-            if (!player.GetComponent<PlayerController>().PlantCrop())
-            {
-                Destroy(gameObject);
-            }
-            else
-            {
-                RoundManager.incrementCrops();
-            }
+            RoundManager.IncrementCrops();
         }
     }
 
@@ -43,7 +30,7 @@ public class Crop : Tower, ITakesDamage
     {
         base.TakeDamage(damager, damage);
         Debug.Log("Is this called?");
-        RoundManager.decrementCrops();
+        RoundManager.DecrementCrops();
         Destroy(gameObject);
     }
 
@@ -51,5 +38,11 @@ public class Crop : Tower, ITakesDamage
     {
         base.OnDestroy();
         TargetManager.Unregister(this);
+    }
+
+    public override void Sell()
+    {
+        base.Sell();
+        RoundManager.DecrementCrops();
     }
 }

@@ -2,15 +2,19 @@ using UnityEngine;
 
 public class Bootstrapper : MonoBehaviour
 {
-    public RectInt PlayRegion;
+    public static Bootstrapper Instance;
+
+    public MapData MapData;
     
     private void Awake()
     {
+        Instance = this;
+        
         gameObject.AddComponent<GridManager>();
-        GridManager.SetRect(PlayRegion);
         gameObject.AddComponent<TargetManager>();
         gameObject.AddComponent<AIManager>();
         gameObject.AddComponent<SpawnerManager>();
         gameObject.AddComponent<RoundManager>();
+        gameObject.AddComponent<MoneyManager>();
     }
 }
