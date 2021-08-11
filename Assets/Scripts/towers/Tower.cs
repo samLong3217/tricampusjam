@@ -27,6 +27,7 @@ public class Tower : Wall
     }
 
     public override void TakeDamage(IDamager damager, float damage) {
+        Debug.Log("Is this happenign");
         totalLife -= damage;
     }
 }
