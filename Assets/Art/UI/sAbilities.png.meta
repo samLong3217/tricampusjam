@@ -14,6 +14,12 @@ TextureImporter:
   - first:
       213: -5335893920355057730
     second: sAbilities_3
+  - first:
+      213: 1271191714811252287
+    second: sAbilities_4
+  - first:
+      213: 1070679165881311621
+    second: sAbilities_5
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -182,6 +188,48 @@ TextureImporter:
       bones: []
       spriteID: ebff11e00c813f5b0800000000000000
       internalID: -5335893920355057730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sAbilities_4
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 0
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3e8eba212e24a110800000000000000
+      internalID: 1271191714811252287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sAbilities_5
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 0
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58164c65701dbde00800000000000000
+      internalID: 1070679165881311621
       vertices: []
       indices: 
       edges: []

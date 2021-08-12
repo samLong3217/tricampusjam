@@ -166,13 +166,13 @@ MonoBehaviour:
   Ghost: {fileID: 6006229012375151146}
   PlaceablePrefabs:
   - {fileID: 8137743710268076978, guid: 36c386f980db11c4196fb68799e9fe76, type: 3}
-  - {fileID: 6257853822612141611, guid: e17e93569d9ae95439b4444fff9bf181, type: 3}
   - {fileID: 1622149526062023523, guid: bcc6d09adc00137478506f5e144cea25, type: 3}
+  - {fileID: 6257853822612141611, guid: e17e93569d9ae95439b4444fff9bf181, type: 3}
   - {fileID: 1282265509141767061, guid: 6d3ed38eb0ce33d47958a33522596f94, type: 3}
   PlaceableSprites:
   - {fileID: 21300000, guid: ab3e8195f2cf5407ab3cdc66710217cc, type: 3}
-  - {fileID: 21300000, guid: 80eb00cb94feb524cbdb7ac37cee9d1e, type: 3}
   - {fileID: 21300000, guid: b9fcd103edaa0c640bb3f1e8924290da, type: 3}
+  - {fileID: 21300000, guid: 80eb00cb94feb524cbdb7ac37cee9d1e, type: 3}
   - {fileID: 21300000, guid: 4bf0da568bbd4414d9c04ae98a4b7adf, type: 3}
   SellPrefab: {fileID: 8770410393927452190, guid: a25650bd89996a14b85cc4683f9886e5,
     type: 3}

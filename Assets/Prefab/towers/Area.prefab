@@ -98,8 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health: 30
-  totalLife: 30
-  cost: 10
+  Lifespan: 30
   fireSpeed: 4
   damage: 2
   hitbox: {fileID: 6678536843327611969, guid: a2b52fa15dc31164f9bab9ac844c754f, type: 3}

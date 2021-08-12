@@ -23,8 +23,6 @@ public class UIManager : MonoBehaviour
     public GameObject abilityButtons;
     public GameObject tutorialText;
     public float tutorialTime = 10.0f;
-    public GameObject tutorialArrowPart1;
-    public GameObject tutorialArrowsPart2;
     private PlayerController playerController;
     private float tutorialHalfPoint;
     private bool tutorialPart2Init = false;
@@ -51,15 +49,11 @@ public class UIManager : MonoBehaviour
         moneyTens.GetComponent<Image>().sprite = goldNumbers[money / 10 % 10];
         moneyOnes.GetComponent<Image>().sprite = goldNumbers[money % 10];
 
-        if (playerController.IsWavePhase()) {
+        if (RoundManager.GetState() == RoundManager.State.Wave) {
             cropButton.SetActive(false);
             abilityButtons.SetActive(true);
+            Debug.Log("Is this happenign?");
             tutorialTime -= Time.deltaTime;
-            if (!tutorialPart2Init) {
-                tutorialArrowsPart2.SetActive(true);
-                tutorialArrowPart1.SetActive(false);
-                tutorialPart2Init = !tutorialPart2Init;
-            }
             if (tutorialTime >= tutorialHalfPoint) {
                 tutorialText.GetComponent<Image>().sprite = tutorialTextSprites[1];
             } else {
