@@ -8,6 +8,8 @@ public class Bullet : MonoBehaviour
 
     public float speed = 1.0f;
 
+    public int damage = 3;
+
     public void Update() {
         if (target != null) {
              Vector3 moveDir = (target.transform.position - transform.position).normalized;
@@ -19,7 +21,7 @@ public class Bullet : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D other) {
         if (other.tag == "enemy" && other.gameObject == target)  {
-            target.GetComponent<Enemy>().TakeDamage(1);
+            target.GetComponent<Enemy>().TakeDamage(damage);
             Destroy(gameObject);
         }
     }

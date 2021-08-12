@@ -98,8 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health: 30
-  totalLife: 30
-  cost: 10
+  Lifespan: 30
   radius: 4
   fireSpeed: 1
   bullet: {fileID: 4409020849033516174, guid: 7537577348e209d45af5c7e9a3038f53, type: 3}
