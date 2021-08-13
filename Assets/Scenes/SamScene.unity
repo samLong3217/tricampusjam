@@ -738,11 +738,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b90dfa6eba071a1478cfea8ca6ac41a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayRegion:
-    x: 0
-    y: 0
-    width: 20
-    height: 20
+  MapData: {fileID: 0}
 --- !u!4 &1933788440
 Transform:
   m_ObjectHideFlags: 0
@@ -897,7 +893,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 6ad9bbbe899a145c986aff8c30f67b3b,
+      objectReference: {fileID: 21300000, guid: 1dddc4b9968ed405d984beb6986bda11,
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d01718d685b63c14cbc686b87dfdff96, type: 3}
