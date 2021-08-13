@@ -15,7 +15,7 @@ MonoBehaviour:
   PlayRegion:
     x: -6
     y: -3
-    width: 24
+    width: 27
     height: 11
   MaxCrops: 5
   StartMoney: 400
