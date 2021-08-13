@@ -22,6 +22,8 @@ public class UIManager : MonoBehaviour
     public GameObject cropButton;
     public GameObject abilityButtons;
     public GameObject tutorialText;
+
+    public GameObject controlText;
     public float tutorialTime = 10.0f;
     private PlayerController playerController;
     private float tutorialHalfPoint;
@@ -62,6 +64,7 @@ public class UIManager : MonoBehaviour
             if (tutorialTime <= 0) {
                 tutorialText.SetActive(false);
             }
+            controlText.SetActive(false);
         } else {
             cropButton.SetActive(true);
             abilityButtons.SetActive(false);
