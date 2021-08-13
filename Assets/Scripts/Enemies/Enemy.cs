@@ -19,6 +19,13 @@ public class Enemy : MonoBehaviour, IDamager
     private float _attackCooldown;
     
     public Rigidbody2D Rigidbody2d;
+    public AudioClip[] AudioClips;
+    private AudioSource _audioSource;
+
+    public void Awake()
+    {
+        _audioSource = GetComponent<AudioSource>();
+    }
     
     private void Update()
     {

@@ -13,6 +13,7 @@ public class AOETower : Tower
     private float fireTime;
     private bool fired; // you're fired
     private GameObject hitboxInstance;
+    private AudioSource source;
     public override void Update() {
         base.Update();
         fireTime -= Time.deltaTime;
@@ -20,6 +21,7 @@ public class AOETower : Tower
             hitboxInstance =  Instantiate(hitbox, transform.position, Quaternion.identity);
             fired = true;
             Debug.Log("Fire");
+            source.Play();
         } else if (fireTime <= -0.2f && fired) {
             if (hitboxInstance != null) {
                 Destroy(hitboxInstance);
@@ -34,6 +36,7 @@ public class AOETower : Tower
         base.OnRegister(success);
         if (success) {
             fireTime = fireSpeed;
+            source = GetComponent<AudioSource>();
         }
     }
 }

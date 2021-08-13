@@ -9,6 +9,7 @@ public class Shooter : Tower
     public GameObject bullet;
 
     private float fireTime;
+    private AudioSource source;
 
     public override void Update() {
         base.Update();
@@ -19,6 +20,7 @@ public class Shooter : Tower
             if (target != null) { // we found something to fire at
                 GameObject bulletInstance = Instantiate(bullet, transform.position, Quaternion.identity);
                 bulletInstance.GetComponent<Bullet>().target = target;
+                source.Play();
             }
             fireTime = fireSpeed;
         }
@@ -43,6 +45,7 @@ public class Shooter : Tower
         base.OnRegister(success);
         if (success) {
             fireTime = fireSpeed;
+            source = GetComponent<AudioSource>();
         }
     }
 }

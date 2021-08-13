@@ -12,10 +12,13 @@ public class PlacementController : MonoBehaviour
 
     public int SelectionIndex = 0;
 
+    private AudioSource source;
+
     private void Awake()
     {
         Destroy(_instance);
         _instance = this;
+        source = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -54,6 +57,7 @@ public class PlacementController : MonoBehaviour
         // Place a tower when the button is pressed
         if (Input.GetMouseButtonDown(0)) {
             Instantiate(PlaceablePrefabs[SelectionIndex], (Vector2) location, Quaternion.identity);
+            source.Play();
         }
         else
         {
