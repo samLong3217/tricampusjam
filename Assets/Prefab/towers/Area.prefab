@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1582063372683118111}
   - component: {fileID: -976123344349947678}
   - component: {fileID: 6412932931710279670}
+  - component: {fileID: -2702310622198038072}
   m_Layer: 9
   m_Name: Area
   m_TagString: takes damage
@@ -75,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4bf0da568bbd4414d9c04ae98a4b7adf, type: 3}
+  m_Sprite: {fileID: 297329186285928090, guid: 2251fa714509645ccaf30c035c2a3972, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -225,3 +226,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!111 &-2702310622198038072
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1282265509141767061}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 64b4e3859c36a8f4aa49af35da881104, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 64b4e3859c36a8f4aa49af35da881104, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
