@@ -18,3 +18,6 @@ MonoBehaviour:
     width: 24
     height: 11
   MaxCrops: 5
+  StartMoney: 400
+  PrewaveMusic: {fileID: 8300000, guid: 77e76d43f76632a478997c327ed50908, type: 3}
+  WaveMusic: {fileID: 8300000, guid: 26226327d15107d49b2fc5acc2f0c424, type: 3}

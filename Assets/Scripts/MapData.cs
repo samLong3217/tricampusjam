@@ -6,4 +6,7 @@ public class MapData : ScriptableObject
     public RectInt PlayRegion;
     public int MaxCrops = 5;
     public int StartMoney = 400;
+
+    public AudioClip PrewaveMusic;
+    public AudioClip WaveMusic;
 }

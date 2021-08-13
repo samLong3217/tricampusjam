@@ -14,6 +14,7 @@ public class RoundManager : MonoBehaviour
         Destroy(_instance);
         _instance = this;
         _state = State.Crops;
+        SoundManager.PlayMusic(Bootstrapper.Instance.MapData.PrewaveMusic);
     }
 
     /// <summary>
@@ -22,6 +23,7 @@ public class RoundManager : MonoBehaviour
     public static void StartWavePhase() {
         _instance._state = State.Wave;
         SpawnerManager.SetAllWaves(0, 0.0f);
+        SoundManager.PlayMusic(Bootstrapper.Instance.MapData.WaveMusic);
     }
 
     public static void IncrementCrops() {

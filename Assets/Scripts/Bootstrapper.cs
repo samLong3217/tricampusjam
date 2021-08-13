@@ -10,6 +10,7 @@ public class Bootstrapper : MonoBehaviour
     {
         Instance = this;
         
+        gameObject.AddComponent<SoundManager>();
         gameObject.AddComponent<GridManager>();
         gameObject.AddComponent<TargetManager>();
         gameObject.AddComponent<AIManager>();
