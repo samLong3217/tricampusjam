@@ -64,11 +64,11 @@ public class RoundManager : MonoBehaviour
                 SpawnerManager.IncrementAllWaves(3.0f);
                 _instance._wave++;
             } else { // we beat all waves, restart
-                SceneManager.LoadScene( SceneManager.GetActiveScene().name );
+                SceneManager.LoadScene( "Title" );
             }
         }
         if (_instance._cropsLeft <= 0) { // we lost :(
-            SceneManager.LoadScene( SceneManager.GetActiveScene().name );
+            SceneManager.LoadScene( "Title" );
         }
     }
 
