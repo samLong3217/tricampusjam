@@ -14,7 +14,7 @@ public class AOETower : Tower
     private bool fired; // you're fired
     private GameObject hitboxInstance;
     private AudioSource source;
-    private Animation animation;
+    private Animator animator;
     public override void Update() {
         base.Update();
         fireTime -= Time.deltaTime;
@@ -23,7 +23,7 @@ public class AOETower : Tower
             fired = true;
             Debug.Log("Fire");
             source.Play();
-            animation.Play();
+            animator.Play("Base Layer.scythe", -1, 0f);
         } else if (fireTime <= -0.2f && fired) {
             if (hitboxInstance != null) {
                 Destroy(hitboxInstance);
@@ -39,7 +39,7 @@ public class AOETower : Tower
         if (success) {
             fireTime = fireSpeed;
             source = GetComponent<AudioSource>();
-            animation = GetComponent<Animation>();
+            animator = GetComponent<Animator>();
         }
     }
 }

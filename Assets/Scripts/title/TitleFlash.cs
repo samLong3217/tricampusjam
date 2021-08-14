@@ -38,5 +38,9 @@ public class TitleFlash : MonoBehaviour
             audioSource.Stop();
             SceneManager.LoadScene("level1");
         }
+        if (Input.GetKey("escape"))
+        {
+            Application.Quit();
+        }
     }
 }

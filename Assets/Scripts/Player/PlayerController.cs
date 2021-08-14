@@ -16,11 +16,13 @@ public class PlayerController : MonoBehaviour {
     private float horizontal;
     private float vertical;
     private int dir; // cardinal direction player is facing for tower placement. 0 = E, 1 = N, 2 = W, 3 = S
+    private Animator animator;
 
     private void Start () {
         body = GetComponent<Rigidbody2D>();
 
         state = State.Crops;
+        animator = GetComponent<Animator>();
     }
 
     private void Update () {
@@ -29,8 +31,19 @@ public class PlayerController : MonoBehaviour {
         // update direction facing
         if (horizontal != 0) {
             dir = (int) Mathf.Floor(horizontal + 1);
+            Vector3 direciton = new Vector3((int) Mathf.RoundToInt(horizontal),1,1);
+            transform.localScale = direciton;
         } else if (vertical != 0) { 
             dir = (int) Mathf.Floor(vertical + 2);
+        }
+        if (horizontal != 0 || vertical != 0) {
+            animator.SetFloat("speed", 1.0f);
+        } else {
+            animator.SetFloat("speed", 0.0f);
+        }
+        if (Input.GetKey("escape"))
+        {
+            Application.Quit();
         }
     }
 

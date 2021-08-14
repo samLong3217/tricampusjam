@@ -4501,6 +4501,25 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1338384422901068845}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1497023529
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1497023528}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 33bcb9521110529459405c5f8a608e2a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &1497023530 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1971835360432405737, guid: 53d57f05b4fb12a4ea35c2f873a540fb,
@@ -23049,6 +23068,32 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1338384424006398803, guid: 53d57f05b4fb12a4ea35c2f873a540fb,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 3736921780253767920, guid: c2593097af59c44aa90feef802c81ffb,
+        type: 3}
+    - target: {fileID: 1338384424006398803, guid: 53d57f05b4fb12a4ea35c2f873a540fb,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1338384424006398803, guid: 53d57f05b4fb12a4ea35c2f873a540fb,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1338384424006398803, guid: 53d57f05b4fb12a4ea35c2f873a540fb,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1971835360432405737, guid: 53d57f05b4fb12a4ea35c2f873a540fb,
+        type: 3}
+      propertyPath: playerMovement
+      value: 
+      objectReference: {fileID: 7400000, guid: 953f746c4dd8aeb47a73ace3a7c7b583, type: 2}
     - target: {fileID: 5059702326123718949, guid: 53d57f05b4fb12a4ea35c2f873a540fb,
         type: 3}
       propertyPath: m_LocalPosition.z
