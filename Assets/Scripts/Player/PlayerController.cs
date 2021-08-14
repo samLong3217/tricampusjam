@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour {
     private Rigidbody2D body;
     private float horizontal;
     private float vertical;
-    private int dir; // cardinal direciton player is facing for tower placement. 0 = E, 1 = N, 2 = W, 3 = S
+    private int dir; // cardinal direction player is facing for tower placement. 0 = E, 1 = N, 2 = W, 3 = S
 
     private void Start () {
         body = GetComponent<Rigidbody2D>();
